@@ -1,0 +1,34 @@
+import { Router } from 'express';
+import { healthRoutes } from './modules/health/health.routes.js';
+import { authRoutes } from './modules/auth/auth.routes.js';
+import { caseRoutes } from './modules/cases/case.routes.js';
+import { evidenceRoutes } from './modules/evidence/evidence.routes.js';
+import { graphRoutes } from './modules/graph/graph.routes.js';
+import { personRoutes } from './modules/persons/person.routes.js';
+import { timelineRoutes } from './modules/timeline/timeline.routes.js';
+import { locationRoutes } from './modules/locations/location.routes.js';
+import { biometricRoutes } from './modules/biometrics/biometric.routes.js';
+import { ragRoutes } from './modules/rag/rag.routes.js';
+import { patternRoutes } from './modules/patterns/patterns.routes.js';
+import { forensicRoutes } from './modules/forensics/forensic.routes.js';
+import { osintRoutes } from './modules/osint/osint.routes.js';
+import { reportRoutes } from './modules/reports/report.routes.js';
+import { auditRoutes } from './modules/audit/audit.routes.js';
+
+export const api = Router();
+
+api.use('/health', healthRoutes);
+api.use('/auth', authRoutes);
+api.use('/cases', caseRoutes);
+api.use('/evidence', evidenceRoutes);
+api.use('/graph', graphRoutes);
+api.use('/persons', personRoutes);
+api.use('/timeline', timelineRoutes);
+api.use('/locations', locationRoutes);
+api.use('/biometrics', biometricRoutes);
+api.use('/ai', ragRoutes);
+api.use('/patterns', patternRoutes);
+api.use('/forensics', forensicRoutes);
+api.use('/osint', osintRoutes);
+api.use('/reports', reportRoutes);
+api.use('/audit', auditRoutes);

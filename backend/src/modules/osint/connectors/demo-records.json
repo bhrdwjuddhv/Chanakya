@@ -1,0 +1,127 @@
+{
+  "_notice": "FICTIONAL PROTOTYPE DATA. Every record below is invented for demonstration and models the shape of a public company/registry disclosure. No real person, company or address is represented.",
+  "records": [
+    {
+      "id": "reg-0001",
+      "kind": "company-officer",
+      "name": "Iris Delacroix",
+      "aliases": ["I. Delacroix"],
+      "email": "accounts@ledgerglass.example",
+      "phone": "+1-415-555-0288",
+      "company": "Ledger Glass Consulting",
+      "role": "Company secretary and sole officer",
+      "incorporated": "2024-11-02",
+      "address": "Suite 400, 91 Chandler Street",
+      "filing": "Companies registry extract CR-88214"
+    },
+    {
+      "id": "reg-0002",
+      "kind": "company-officer",
+      "name": "Iris Delacroix",
+      "company": "Pelham Nominees Ltd",
+      "role": "Director",
+      "incorporated": "2023-06-14",
+      "address": "12 Rookwood Terrace",
+      "filing": "Companies registry extract CR-71903",
+      "note": "Second directorship not previously linked to this individual."
+    },
+    {
+      "id": "reg-0003",
+      "kind": "company-officer",
+      "name": "Victor Lindqvist",
+      "email": "v.lindqvist@lindqvistbuild.example",
+      "company": "Lindqvist Build Group",
+      "role": "Principal",
+      "incorporated": "2016-03-22",
+      "address": "17 Foundry Road",
+      "filing": "Companies registry extract CR-40117"
+    },
+    {
+      "id": "reg-0004",
+      "kind": "company-officer",
+      "name": "Selim Okonkwo",
+      "email": "s.okonkwo@okonkwoadvisory.example",
+      "company": "Okonkwo Advisory",
+      "role": "Principal",
+      "incorporated": "2019-09-05",
+      "filing": "Companies registry extract CR-55620"
+    },
+    {
+      "id": "reg-0005",
+      "kind": "company-officer",
+      "name": "Marcus Vale",
+      "aliases": ["The Harbourmaster"],
+      "company": "Vale Freight Holdings",
+      "role": "Sole director",
+      "incorporated": "2018-01-30",
+      "filing": "Companies registry extract CR-33288",
+      "note": "Shares a registered agent with Northside Auto Salvage."
+    },
+    {
+      "id": "reg-0006",
+      "kind": "company-officer",
+      "name": "Katya Sorenson",
+      "company": "Vale Freight Holdings",
+      "role": "Company secretary",
+      "appointed": "2024-07-11",
+      "filing": "Companies registry extract CR-33288/A",
+      "note": "Officer appointment not present in current case records."
+    },
+    {
+      "id": "reg-0007",
+      "kind": "professional-listing",
+      "name": "Jonas Kerr",
+      "email": "j.kerr@riverfront-bio.example",
+      "company": "Riverfront Bioscience Institute",
+      "role": "Principal researcher, composite materials",
+      "filing": "Institute public staff directory"
+    },
+    {
+      "id": "reg-0008",
+      "kind": "professional-listing",
+      "name": "Alina Petrova",
+      "email": "a.petrova@riverfront-bio.example",
+      "company": "Riverfront Bioscience Institute",
+      "role": "Senior researcher, composite materials",
+      "filing": "Institute public staff directory"
+    },
+    {
+      "id": "reg-0009",
+      "kind": "company-officer",
+      "name": "Daniel Rehm",
+      "company": "Ledger Glass Consulting",
+      "role": "Second account signatory",
+      "appointed": "2025-02-03",
+      "filing": "Banking disclosure FIR-2025-118",
+      "note": "Does not appear on the incorporation filing."
+    },
+    {
+      "id": "reg-0010",
+      "kind": "property-record",
+      "name": "Elena Rask",
+      "company": "Rask Antiques",
+      "role": "Registered proprietor",
+      "address": "22 Camden Row",
+      "filing": "Commercial property register CP-9921"
+    },
+    {
+      "id": "reg-0011",
+      "kind": "company-officer",
+      "name": "Harold Meade",
+      "company": "Civic Futures Trust",
+      "role": "Board member",
+      "appointed": "2023-04-18",
+      "filing": "Charity commission filing CH-2210",
+      "note": "Board minutes list I. Delacroix as a fellow member."
+    },
+    {
+      "id": "reg-0012",
+      "kind": "company-officer",
+      "name": "Iris Delacroix",
+      "company": "Civic Futures Trust",
+      "role": "Board member",
+      "appointed": "2023-04-18",
+      "filing": "Charity commission filing CH-2210"
+    }
+  ]
+}

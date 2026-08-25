@@ -1,0 +1,50 @@
+FICTIONAL PROTOTYPE DATA — created for a software demonstration. All names, companies,
+addresses and account details below are invented.
+
+PROJECT LEDGER GLASS
+FINANCIAL INSTITUTION REFERRAL — SUMMARY
+Reference: FIR-2025-118
+Date: 12 July 2025
+Classification: CONFIDENTIAL
+
+Referral received from Calderon Trust Bank concerning account activity on the business
+account of Ledger Glass Consulting, held at the bank's Chandler Street branch.
+
+ACCOUNT PROFILE
+
+The account was opened on 8 November 2024, six days after incorporation. The sole
+signatory is Iris Delacroix. The stated business activity is "management consultancy".
+Declared expected turnover at opening was $80,000 per annum.
+
+ACTIVITY
+
+Actual credits in the eight months to 30 June 2025 total $743,000, roughly nine times
+the declared expectation. Credits arrive from three sources: Lindqvist Build Group,
+Okonkwo Advisory, and a single payment from a subcontractor line on a Meridian Civic
+Contracts schedule.
+
+Debits follow a consistent pattern. Within four working days of each credit, between 60
+and 70 percent of the amount is transferred onward to a personal account held by
+Iris Delacroix, and a smaller sum, typically 15 percent, is transferred to an account in
+the name of Pelham Nominees Ltd, a company the bank has been unable to associate with
+any trading activity.
+
+A further recipient appears twice: an account in the name of H. Meade. The two transfers
+total $48,500 and are described in the payment reference as "consultancy reimbursement".
+
+NEW ENTITIES IDENTIFIED
+
+Pelham Nominees Ltd — recipient of approximately $111,000 across the period. Registered
+office given as 12 Rookwood Terrace.
+
+Daniel Rehm — named as the second signatory added to the Ledger Glass account on
+3 February 2025. Rehm does not appear on the incorporation filing and is not otherwise
+known to this investigation.
+
+BANK'S OBSERVATION
+
+The account operates as a pass-through. Funds do not rest in it, no operating costs are
+paid from it, and no payroll runs through it. The bank has restricted the account pending
+the outcome of this referral.
+
+END OF SUMMARY

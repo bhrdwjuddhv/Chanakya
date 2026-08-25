@@ -1,0 +1,58 @@
+FICTIONAL PROTOTYPE DATA — created for a software demonstration. All names, companies,
+addresses and phone numbers below are invented.
+
+PROJECT LEDGER GLASS
+CALL DATA ANALYSIS — SUMMARY
+Reference: CDA-07
+Classification: CONFIDENTIAL
+
+1. MATERIAL REVIEWED
+
+Call data records for four handsets across the period 1 December 2024 to 30 June 2025.
+Content was not available. This analysis concerns pattern and timing only.
+
+2. HANDSETS
+
+H1 — +1-415-555-0288. Listed on the Ledger Glass Consulting incorporation filing and on
+invoices issued by Lindqvist Build Group and Okonkwo Advisory. Used by Iris Delacroix.
+
+H2 — handset attributed to Nadia Brandt, senior procurement officer.
+
+H3 — handset attributed to Victor Lindqvist, principal of Lindqvist Build Group.
+
+H4 — handset attributed to Selim Okonkwo, principal of Okonkwo Advisory.
+
+3. FINDINGS
+
+There is no direct contact between H2 and H3 in the reviewed period. There is no direct
+contact between H2 and H4. There is no direct contact between H3 and H4.
+
+H1 is in contact with all three.
+
+H1 to H2: eighteen calls, clustered in the fortnight preceding each of the three award
+dates. Twelve of the eighteen fall in a four-day window before an award. Mean duration
+under ninety seconds.
+
+H1 to H3: nine calls, including one on 11 January, the evening of a private dinner
+booking made under the Delacroix name at which Lindqvist was a listed guest.
+
+H1 to H4: five calls and eleven messages. The message pattern is less regular and is not
+obviously tied to award dates.
+
+4. INTERPRETATION
+
+The procurement side and the vendor side of these transactions do not speak to each
+other. Both speak to the same handset. On the call data alone, Ms Delacroix's handset is
+the only communication path between them.
+
+This is a structural observation, not a finding of wrongdoing. Call data establishes
+contact, not content. No conclusion about the subject of any call can be drawn from this
+material.
+
+5. CAVEAT
+
+Attribution of H2, H3 and H4 to named individuals rests on subscriber records and has
+not been independently verified. Any handset may be used by a person other than its
+registered subscriber.
+
+END OF SUMMARY

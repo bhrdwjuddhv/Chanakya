@@ -1,0 +1,324 @@
+@import 'tailwindcss';
+
+/* Tailwind v4 has no darkMode:'class' config knob — this is the equivalent. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Nexus tokens.
+   Light is :root, dark is .dark. Every value the UI uses is a variable here, so
+   a component never hard-codes a colour and both modes stay in step.
+--------------------------------------------------------------------------- */
+
+:root {
+  --background: #f6f6f7;
+  --foreground: #151515;
+  --card: #ffffff;
+  --card-foreground: #151515;
+  --popover: #ffffff;
+  --popover-foreground: #151515;
+  --primary: #c90003;
+  --primary-foreground: #ffffff;
+  --secondary: #efeff0;
+  --secondary-foreground: #151515;
+  --muted: #efeff0;
+  --muted-foreground: #6e6e6e;
+  --accent: #efeff0;
+  --accent-foreground: #151515;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #c90003;
+
+  --surface-2: #ffffff;
+  --glow-red: #c90003;
+  /* The sidebar stays black in light mode — it is the signature of the design. */
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #dbdbdb;
+  --success: #16a34a;
+  --info: #2563eb;
+  --ai: #9333ea;
+  --warning: #d97706;
+
+  /* Graph canvas sits just off the app background so the panel reads as a surface. */
+  --graph-canvas: #fafafa;
+  --hover-overlay: rgb(0 0 0 / 0.02);
+
+  /* Glows look wrong on white — neutral shadows carry elevation instead. */
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 8px 24px rgb(0 0 0 / 0.05);
+  --shadow-glow-primary: 0 2px 12px rgb(201 0 3 / 0.18);
+  --shadow-status-live: none;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #dbdbdb;
+  --card: #141414;
+  --card-foreground: #dbdbdb;
+  --popover: #141414;
+  --popover-foreground: #dbdbdb;
+  --primary: #c90003;
+  --primary-foreground: #ffffff;
+  --secondary: #1c1c1c;
+  --secondary-foreground: #dbdbdb;
+  --muted: #1c1c1c;
+  /* #8A8A8A rather than the source #7D7D7D — the darker grey fails AA at 12-14px. */
+  --muted-foreground: #8a8a8a;
+  --accent: #1c1c1c;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #262626;
+  --input: #262626;
+  --ring: #c90003;
+
+  --surface-2: #242424;
+  --glow-red: #660808;
+  --sidebar: #000000;
+  --sidebar-foreground: #dbdbdb;
+  --success: #22c55e;
+  --info: #3b82f6;
+  --ai: #a855f7;
+  --warning: #f59e0b;
+
+  --graph-canvas: #0c0c0c;
+  --hover-overlay: rgb(255 255 255 / 0.02);
+
+  --shadow-card: 0 8px 24px rgb(0 0 0 / 0.4);
+  --shadow-glow-primary: 0 0 20px rgb(201 0 3 / 0.28);
+  --shadow-status-live: 0 0 8px rgb(34 197 94 / 0.55);
+}
+
+/* `inline` so the utilities resolve the variables at runtime and follow the theme. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-surface-2: var(--surface-2);
+  --color-glow-red: var(--glow-red);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-success: var(--success);
+  --color-info: var(--info);
+  --color-ai: var(--ai);
+  --color-warning: var(--warning);
+  --color-graph-canvas: var(--graph-canvas);
+
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Controls are 5px, cards 12px — the two signature corners. */
+  --radius-control: 5px;
+  --radius-chip: 8px;
+  --radius-card: 12px;
+
+  --shadow-card: var(--shadow-card);
+  --shadow-glow: var(--shadow-glow-primary);
+  --shadow-live: var(--shadow-status-live);
+
+  --ease-signature: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --tracking-display: -0.03em;
+  --tracking-title: -0.02em;
+  --tracking-tight: -0.015em;
+  --tracking-body: -0.01em;
+  --tracking-micro: 0.08em;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    /* Medium (500) is the default weight — the signature of this type system. */
+    @apply bg-background text-foreground font-sans font-medium;
+    font-size: 14px;
+    letter-spacing: var(--tracking-body);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1 {
+    @apply text-foreground font-semibold;
+    letter-spacing: var(--tracking-title);
+  }
+  h2 {
+    @apply text-foreground font-semibold;
+    letter-spacing: var(--tracking-tight);
+  }
+  h3,
+  h4 {
+    @apply text-foreground font-semibold;
+    letter-spacing: var(--tracking-body);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* Codes, hashes, scores and ids read as data, not prose. */
+  code,
+  kbd,
+  pre {
+    @apply font-mono;
+    font-weight: 400;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@layer components {
+  /* The 11px uppercase micro-label used above every panel and table column. */
+  .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-micro);
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .display {
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-display);
+    line-height: 1.05;
+  }
+
+  .surface-hover:hover {
+    background-color: var(--hover-overlay);
+  }
+}
+
+/* Live / processing indicator. */
+@keyframes nexus-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+.pulse-dot {
+  animation: nexus-pulse 1.8s var(--ease-standard) infinite;
+}
+
+/* One-time login → dashboard tile reveal. */
+@keyframes nexus-tile-out {
+  to {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+.reveal-tile {
+  animation: nexus-tile-out 420ms var(--ease-signature) forwards;
+}
+
+@keyframes nexus-caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.stream-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  vertical-align: text-bottom;
+  background: var(--primary);
+  animation: nexus-caret 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Kill pulse, reveal and roll; keep colour transitions, which don't move anything. */
+  .pulse-dot,
+  .reveal-tile,
+  .stream-caret {
+    animation: none !important;
+  }
+  .reveal-tile {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Leaflet's own stylesheet is imported by the map component; this restyles it. */
+.leaflet-container {
+  @apply bg-muted font-sans text-sm;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--card);
+  color: var(--card-foreground);
+  border-radius: var(--radius-chip);
+  box-shadow: var(--shadow-card);
+}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background: var(--card);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+/* OSM tiles are bright; dim them so the map sits in a dark UI. */
+.dark .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+  background-clip: padding-box;
+}
