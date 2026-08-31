@@ -7,6 +7,28 @@ import { DocumentViewer } from '../case/EvidenceTab';
 import { cn } from '../../lib/utils';
 import { useI18n } from '../../lib/i18n';
 
+/**
+ * Sufficiency badge styling. A factory rather than a constant because the label is
+ * translated — and it lives at module scope so AssistantMessage can reach it too.
+ */
+const sufficiencyStyles = (lang) => ({
+  sufficient: {
+    icon: CheckCircle2,
+    label: lang === 'hi' ? 'केस साक्ष्यों से पूर्णतः प्रमाणित' : 'Answered from the evidence',
+    className: 'bg-success/12 text-success border-success/25',
+  },
+  partial: {
+    icon: AlertTriangle,
+    label: lang === 'hi' ? 'आंशिक रूप से प्रमाणित' : 'Partially answered',
+    className: 'bg-warning/12 text-warning border-warning/25',
+  },
+  insufficient: {
+    icon: CircleSlash,
+    label: lang === 'hi' ? 'उपलब्ध साक्ष्यों से प्रमाणित नहीं' : 'Not answerable from this evidence',
+    className: 'bg-muted text-muted-foreground border-input',
+  },
+});
+
 export function AssistantTab({ caseId }) {
   const [messages, setMessages] = useState([]);
   const [question, setQuestion] = useState('');
@@ -16,24 +38,6 @@ export function AssistantTab({ caseId }) {
   const conversationId = useRef(null);
   const scrollRef = useRef(null);
   const { t, lang } = useI18n();
-
-  const SUFFICIENCY = {
-    sufficient: {
-      icon: CheckCircle2,
-      label: lang === 'hi' ? 'केस साक्ष्यों से पूर्णतः प्रमाणित' : 'Answered from the evidence',
-      className: 'bg-success/12 text-success border-success/25',
-    },
-    partial: {
-      icon: AlertTriangle,
-      label: lang === 'hi' ? 'आंशिक रूप से प्रमाणित' : 'Partially answered',
-      className: 'bg-warning/12 text-warning border-warning/25',
-    },
-    insufficient: {
-      icon: CircleSlash,
-      label: lang === 'hi' ? 'उपलब्ध साक्ष्यों से प्रमाणित नहीं' : 'Not answerable from this evidence',
-      className: 'bg-muted text-muted-foreground border-input',
-    },
-  };
 
   const health = useQuery({ queryKey: ['health'], queryFn: () => get('/health') });
   const suggestions = useQuery({
@@ -119,7 +123,7 @@ export function AssistantTab({ caseId }) {
                 </div>
               </div>
             ) : (
-              <AssistantMessage key={i} message={message} onOpenCitation={setViewing} />
+              <AssistantMessage key={i} message={message} onOpenCitation={setViewing} lang={lang} />
             ),
           )}
 
@@ -216,8 +220,8 @@ function Intro({ aiReady, suggestions, onPick, healthLoading }) {
   );
 }
 
-function AssistantMessage({ message, onOpenCitation }) {
-  const state = SUFFICIENCY[message.sufficiency];
+function AssistantMessage({ message, onOpenCitation, lang }) {
+  const state = sufficiencyStyles(lang)[message.sufficiency];
 
   return (
     <Card className="p-4">

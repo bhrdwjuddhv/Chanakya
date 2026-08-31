@@ -36,7 +36,7 @@ import { useI18n } from '../lib/i18n';
 export function CaseDetail() {
   const { id } = useParams();
   const [tab, setTab] = useState('overview');
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['case', id],

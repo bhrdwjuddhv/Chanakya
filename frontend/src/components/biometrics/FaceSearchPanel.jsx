@@ -52,39 +52,6 @@ export function FaceSearchPanel({ caseId }) {
   const enrolled = status.data.enrolled || [];
 
   return (
-    <div className="space-y-6">
-      <div className="grid gap-6 lg:grid-cols-3">
-        <Card className="p-6 text-center border-dashed border-2 hover:border-primary/40 transition-colors">
-          <input
-            ref={fileRef}
-            type="file"
-            className="hidden"
-            accept="image/*"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              onFile(file);
-              e.target.value = '';
-            }}
-          />
-          <ScanFace className="size-7 text-muted-foreground/50 mx-auto" />
-          <p className="text-sm font-medium text-foreground mt-2">
-            {lang === 'hi' ? 'संदिग्ध का चेहरा फ़ोटो यहाँ अपलोड करें' : 'Drop a probe photo to search'}
-          </p>
-          <Button
-            variant="secondary"
-            size="sm"
-            className="mt-2"
-            loading={searchMutation.isPending}
-            onClick={() => fileRef.current?.click()}
-          >
-            {lang === 'hi' ? 'फ़ोटो चुनें (Choose photo)' : 'Choose a photo'}
-          </Button>
-          <p className="text-xs text-muted-foreground mt-2">
-            {lang === 'hi'
-              ? 'InsightFace buffalo_l (512-आयामी एम्बेडिंग)। दर्ज Suspect गैलरी में कोसाइन सिमिलैरिटी १:एन मिलान।'
-              : 'Searched against every enrolled suspect. The score is cosine similarity on 512-d embeddings.'}
-          </p>
-        </Card>
     <div className="grid gap-4 lg:grid-cols-3">
       <div className="lg:col-span-2 space-y-4">
         <Card
@@ -106,7 +73,9 @@ export function FaceSearchPanel({ caseId }) {
             }}
           />
           <Upload className="size-6 text-muted-foreground/50 mx-auto" />
-          <p className="text-sm font-medium text-foreground mt-2">Drop a probe photo, or</p>
+          <p className="text-sm font-medium text-foreground mt-2">
+            {lang === 'hi' ? 'संदिग्ध का चेहरा फ़ोटो यहाँ अपलोड करें' : 'Drop a probe photo, or'}
+          </p>
           <Button
             variant="secondary"
             size="sm"
@@ -115,12 +84,16 @@ export function FaceSearchPanel({ caseId }) {
             disabled={!enrolled.length}
             onClick={() => fileRef.current?.click()}
           >
-            Choose an image
+            {lang === 'hi' ? 'फ़ोटो चुनें (Choose photo)' : 'Choose an image'}
           </Button>
           <p className="text-xs text-muted-foreground mt-2">
-            {enrolled.length
-              ? `Searched 1:N against ${enrolled.length} enrolled ${enrolled.length === 1 ? 'identity' : 'identities'} using InsightFace buffalo_l.`
-              : 'No identities enrolled yet — enrol a reference gallery before searching.'}
+            {!enrolled.length
+              ? lang === 'hi'
+                ? 'अभी कोई पहचान दर्ज नहीं है — खोज से पहले संदर्भ गैलरी दर्ज करें।'
+                : 'No identities enrolled yet — enrol a reference gallery before searching.'
+              : lang === 'hi'
+                ? `InsightFace buffalo_l (512-आयामी एम्बेडिंग)। ${enrolled.length} दर्ज पहचानों में कोसाइन सिमिलैरिटी 1:N मिलान।`
+                : `Searched 1:N against ${enrolled.length} enrolled ${enrolled.length === 1 ? 'identity' : 'identities'} using InsightFace buffalo_l.`}
           </p>
           {searchMutation.error && (
             <p className="text-xs text-destructive mt-2">{searchMutation.error.message}</p>

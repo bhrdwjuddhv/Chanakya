@@ -74,8 +74,6 @@ export function OsintTab({ caseId }) {
           <Button type="submit" loading={searchMutation.isPending} disabled={query.trim().length < 2}>
             {lang === 'hi' ? 'ओपन-सोर्स खोज करें' : 'Run OSINT query'}
           </Button>
-            Search sources
-          </Button>
         </form>
 
         <div className="mt-4 pt-4 border-t border-border">
