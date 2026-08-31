@@ -7,6 +7,7 @@ import {
   ChevronsRight,
   Fingerprint,
   FolderOpen,
+  Globe,
   LayoutDashboard,
   LogOut,
   Monitor,
@@ -16,26 +17,11 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../lib/auth';
 import { useTheme } from '../../lib/theme';
+import { useI18n } from '../../lib/i18n';
 import { get } from '../../lib/api';
 import { cn } from '../../lib/utils';
 import { StatusPill } from '../ui';
 import { BrandMark } from './BrandMark';
-
-const NAV = [
-  { to: '/', label: 'Dashboard', icon: LayoutDashboard, end: true },
-  { to: '/cases', label: 'Cases', icon: FolderOpen },
-  { to: '/people', label: 'People', icon: Users },
-  { to: '/biometrics', label: 'Biometrics', icon: Fingerprint },
-  { to: '/audit', label: 'Audit trail', icon: Activity },
-];
-
-const CONTEXT = {
-  '/': 'Dashboard',
-  '/cases': 'Cases',
-  '/people': 'People',
-  '/biometrics': 'Biometrics',
-  '/audit': 'Audit trail',
-};
 
 export function AppShell() {
   const [expanded, setExpanded] = useState(false);
@@ -58,6 +44,16 @@ export function AppShell() {
 
 /** Pure black in both modes — the signature of the design. */
 function Sidebar({ expanded, onToggle }) {
+  const t = useI18n((s) => s.t);
+
+  const NAV = [
+    { to: '/', label: t('dashboard', 'Dashboard'), icon: LayoutDashboard, end: true },
+    { to: '/cases', label: t('cases', 'Cases'), icon: FolderOpen },
+    { to: '/people', label: t('people', 'People'), icon: Users },
+    { to: '/biometrics', label: t('biometrics', 'Biometrics'), icon: Fingerprint },
+    { to: '/audit', label: t('auditTrail', 'Audit trail'), icon: Activity },
+  ];
+
   return (
     <aside
       className={cn(
@@ -71,9 +67,14 @@ function Sidebar({ expanded, onToggle }) {
           <BrandMark className="size-[18px] text-primary" />
         </span>
         {expanded && (
-          <span className="text-sm font-semibold tracking-tight text-sidebar-foreground">
-            Chanakya
-          </span>
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold tracking-tight text-sidebar-foreground">
+              Chanakya
+            </span>
+            <span className="text-[10px] text-white/40 tracking-wider font-mono">
+              चाणक्य NCRB
+            </span>
+          </div>
         )}
       </div>
 
@@ -109,7 +110,7 @@ function Sidebar({ expanded, onToggle }) {
 
       <button
         onClick={onToggle}
-        aria-label={expanded ? 'Collapse navigation' : 'Expand navigation'}
+        aria-label={expanded ? t('collapse', 'Collapse') : t('expand', 'Expand')}
         className={cn(
           'flex items-center gap-2 border-t border-white/[0.06] py-3 text-[11px] text-white/40',
           'transition-colors hover:text-white',
@@ -117,7 +118,7 @@ function Sidebar({ expanded, onToggle }) {
         )}
       >
         {expanded ? <ChevronsLeft className="size-4" /> : <ChevronsRight className="size-4" />}
-        {expanded && 'Collapse'}
+        {expanded && t('collapse', 'Collapse')}
       </button>
     </aside>
   );
@@ -125,6 +126,7 @@ function Sidebar({ expanded, onToggle }) {
 
 /** Real health, polled. A degraded backend should be visible, not a mystery. */
 function ServiceHealth({ expanded }) {
+  const t = useI18n((s) => s.t);
   const { data } = useQuery({
     queryKey: ['health'],
     queryFn: () => get('/health'),
@@ -146,7 +148,7 @@ function ServiceHealth({ expanded }) {
 
   return (
     <div className="border-t border-white/[0.06] px-4 py-3">
-      <p className="label !text-white/35 mb-2">Services</p>
+      <p className="label !text-white/35 mb-2">{t('services', 'Services')}</p>
       <div className="flex flex-wrap gap-x-3 gap-y-1.5">
         {entries.map(([name, service]) => (
           <span
@@ -165,29 +167,40 @@ function ServiceHealth({ expanded }) {
 
 function TopBar() {
   const { user, logout } = useAuth();
+  const t = useI18n((s) => s.t);
   const navigate = useNavigate();
   const location = useLocation();
   const { data } = useQuery({ queryKey: ['health'], queryFn: () => get('/health'), retry: false });
 
   const services = data ? Object.values(data.services) : [];
   const online = services.filter((s) => s.ok).length;
-  const context = CONTEXT[location.pathname] || (location.pathname.startsWith('/cases/') ? 'Case file' : 'Workspace');
+
+  const getContextTitle = () => {
+    if (location.pathname === '/') return t('dashboard', 'Dashboard');
+    if (location.pathname === '/cases') return t('cases', 'Cases');
+    if (location.pathname === '/people') return t('people', 'People');
+    if (location.pathname === '/biometrics') return t('biometrics', 'Biometrics');
+    if (location.pathname === '/audit') return t('auditTrail', 'Audit trail');
+    if (location.pathname.startsWith('/cases/')) return t('caseFile', 'Case file');
+    return t('workspace', 'Workspace');
+  };
 
   return (
     <header className="h-16 shrink-0 border-b border-border bg-background flex items-center gap-4 px-6">
       <div className="flex items-center gap-2.5 min-w-0">
-        <span className="label">Chanakya</span>
+        <span className="label">Chanakya · चाणक्य</span>
         <span className="size-1 rounded-full bg-muted-foreground/40" />
-        <span className="text-[13px] font-medium text-foreground truncate">{context}</span>
+        <span className="text-[13px] font-medium text-foreground truncate">{getContextTitle()}</span>
       </div>
 
       <div className="ml-auto flex items-center gap-3">
         {services.length > 0 && (
           <StatusPill tone={online === services.length ? 'live' : 'warning'} pulse={online === services.length}>
-            {online} of {services.length} services online
+            {online} of {services.length} {t('servicesOnline', 'services online')}
           </StatusPill>
         )}
 
+        <LanguageToggle />
         <ThemeToggle />
 
         <div className="flex items-center gap-2.5 pl-3 border-l border-border">
@@ -206,8 +219,8 @@ function TopBar() {
               logout();
               navigate('/login');
             }}
-            title="Sign out"
-            aria-label="Sign out"
+            title={t('signOut', 'Sign out')}
+            aria-label={t('signOut', 'Sign out')}
             className="grid size-8 place-items-center rounded-control text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             <LogOut className="size-4" />
@@ -218,15 +231,32 @@ function TopBar() {
   );
 }
 
+function LanguageToggle() {
+  const { lang, toggleLang } = useI18n();
+
+  return (
+    <button
+      onClick={toggleLang}
+      title={lang === 'en' ? 'Switch to Hindi (हिंदी)' : 'Switch to English'}
+      aria-label="Toggle language"
+      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-control border border-border text-[12px] font-medium text-muted-foreground transition-colors duration-150 ease-standard hover:bg-muted hover:text-foreground"
+    >
+      <Globe className="size-3.5 text-primary" />
+      <span>{lang === 'en' ? 'हिंदी (HI)' : 'English (EN)'}</span>
+    </button>
+  );
+}
+
 function ThemeToggle() {
   const { theme, cycle } = useTheme();
+  const t = useI18n((s) => s.t);
   const Icon = theme === 'dark' ? Moon : theme === 'light' ? Sun : Monitor;
 
   return (
     <button
       onClick={cycle}
-      title={`Theme: ${theme} — click to change`}
-      aria-label={`Theme: ${theme}. Click to change.`}
+      title={`${t('theme', 'Theme')}: ${theme}`}
+      aria-label={`${t('theme', 'Theme')}: ${theme}`}
       className="grid size-9 place-items-center rounded-control border border-border text-muted-foreground transition-colors duration-150 ease-standard hover:bg-muted hover:text-foreground"
     >
       <Icon className="size-4" />
@@ -241,3 +271,4 @@ const initials = (name) =>
     .slice(0, 2)
     .join('')
     .toUpperCase();
+

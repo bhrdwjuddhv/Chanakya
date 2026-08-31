@@ -5,24 +5,7 @@ import { get, streamSSE } from '../../lib/api';
 import { Badge, Button, Card, ErrorState, Spinner } from '../ui';
 import { DocumentViewer } from '../case/EvidenceTab';
 import { cn } from '../../lib/utils';
-
-const SUFFICIENCY = {
-  sufficient: {
-    icon: CheckCircle2,
-    label: 'Answered from the evidence',
-    className: 'bg-success/12 text-success border-success/25',
-  },
-  partial: {
-    icon: AlertTriangle,
-    label: 'Partially answered',
-    className: 'bg-warning/12 text-warning border-warning/25',
-  },
-  insufficient: {
-    icon: CircleSlash,
-    label: 'Not answerable from this evidence',
-    className: 'bg-muted text-muted-foreground border-input',
-  },
-};
+import { useI18n } from '../../lib/i18n';
 
 export function AssistantTab({ caseId }) {
   const [messages, setMessages] = useState([]);
@@ -32,6 +15,25 @@ export function AssistantTab({ caseId }) {
   const [viewing, setViewing] = useState(null);
   const conversationId = useRef(null);
   const scrollRef = useRef(null);
+  const { t, lang } = useI18n();
+
+  const SUFFICIENCY = {
+    sufficient: {
+      icon: CheckCircle2,
+      label: lang === 'hi' ? 'केस साक्ष्यों से पूर्णतः प्रमाणित' : 'Answered from the evidence',
+      className: 'bg-success/12 text-success border-success/25',
+    },
+    partial: {
+      icon: AlertTriangle,
+      label: lang === 'hi' ? 'आंशिक रूप से प्रमाणित' : 'Partially answered',
+      className: 'bg-warning/12 text-warning border-warning/25',
+    },
+    insufficient: {
+      icon: CircleSlash,
+      label: lang === 'hi' ? 'उपलब्ध साक्ष्यों से प्रमाणित नहीं' : 'Not answerable from this evidence',
+      className: 'bg-muted text-muted-foreground border-input',
+    },
+  };
 
   const health = useQuery({ queryKey: ['health'], queryFn: () => get('/health') });
   const suggestions = useQuery({

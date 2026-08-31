@@ -31,33 +31,35 @@ import { AssistantTab } from '../components/ai/AssistantTab';
 import { FaceSearchPanel } from '../components/biometrics/FaceSearchPanel';
 import { AuditTab } from '../components/case/AuditTab';
 import { PRIORITY_STYLES } from '../lib/utils';
+import { useI18n } from '../lib/i18n';
 
 export function CaseDetail() {
   const { id } = useParams();
   const [tab, setTab] = useState('overview');
+  const { t } = useI18n();
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['case', id],
     queryFn: () => get(`/cases/${id}`),
   });
 
-  if (isLoading) return <Spinner label="Loading case" className="flex-1" />;
+  if (isLoading) return <Spinner label={t('processing', 'Loading case')} className="flex-1" />;
   if (error) return <ErrorState error={error} onRetry={refetch} className="flex-1" />;
 
   const caseData = data.case;
   const tabs = [
-    { value: 'overview', label: 'Overview', icon: LayoutList },
-    { value: 'graph', label: 'Relationship graph', icon: Network, count: caseData.stats.nodeCount },
-    { value: 'patterns', label: 'Patterns', icon: TriangleAlert },
-    { value: 'evidence', label: 'Evidence', icon: FileStack, count: caseData.stats.evidenceCount },
-    { value: 'timeline', label: 'Timeline', icon: CalendarClock, count: caseData.stats.timelineCount },
-    { value: 'map', label: 'Map', icon: MapPin, count: caseData.stats.locationCount },
-    { value: 'forensics', label: 'Forensics', icon: FileSearch },
-    { value: 'osint', label: 'OSINT', icon: Globe },
-    { value: 'biometrics', label: 'Biometrics', icon: ScanFace },
-    { value: 'reports', label: 'Reports', icon: FileText },
-    { value: 'assistant', label: 'Assistant', icon: Sparkles },
-    { value: 'audit', label: 'Audit', icon: Activity },
+    { value: 'overview', label: t('overview', 'Overview'), icon: LayoutList },
+    { value: 'graph', label: t('graph', 'Relationship graph'), icon: Network, count: caseData.stats.nodeCount },
+    { value: 'patterns', label: t('patterns', 'Patterns'), icon: TriangleAlert },
+    { value: 'evidence', label: t('evidence', 'Evidence'), icon: FileStack, count: caseData.stats.evidenceCount },
+    { value: 'timeline', label: t('timeline', 'Timeline'), icon: CalendarClock, count: caseData.stats.timelineCount },
+    { value: 'map', label: t('map', 'Map'), icon: MapPin, count: caseData.stats.locationCount },
+    { value: 'forensics', label: t('forensics', 'Forensics'), icon: FileSearch },
+    { value: 'osint', label: t('osint', 'OSINT'), icon: Globe },
+    { value: 'biometrics', label: t('biometrics', 'Biometrics'), icon: ScanFace },
+    { value: 'reports', label: t('reports', 'Reports'), icon: FileText },
+    { value: 'assistant', label: t('assistant', 'Assistant'), icon: Sparkles },
+    { value: 'audit', label: t('auditTrail', 'Audit'), icon: Activity },
   ];
 
   // The graph and map own their full height; the rest scroll normally.
@@ -70,16 +72,46 @@ export function CaseDetail() {
           to="/cases"
           className="inline-flex items-center gap-1.5 text-[12px] text-muted-foreground transition-colors hover:text-foreground"
         >
-          <ArrowLeft className="size-3" /> All cases
+          <ArrowLeft className="size-3" /> {t('allCases', 'All cases')}
         </Link>
 
         <div className="flex items-start justify-between gap-4 mt-2">
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="font-mono text-[12px] font-normal text-muted-foreground">{caseData.caseNumber}</span>
-              <Badge className={PRIORITY_STYLES[caseData.priority]}>{caseData.priority}</Badge>
-              <Badge className="capitalize">{caseData.status.replace('_', ' ')}</Badge>
-              <Badge className="uppercase tracking-micro !text-[10px]">{caseData.classification}</Badge>
+              <Badge className={PRIORITY_STYLES[caseData.priority]}>
+                {lang === 'hi'
+                  ? caseData.priority === 'critical'
+                    ? 'अति-संवेदनशील'
+                    : caseData.priority === 'high'
+                      ? 'उच्च प्राथमिकता'
+                      : caseData.priority === 'medium'
+                        ? 'मध्यम प्राथमिकता'
+                        : 'सामान्य'
+                  : caseData.priority}
+              </Badge>
+              <Badge className="capitalize">
+                {lang === 'hi'
+                  ? caseData.status === 'active'
+                    ? 'सक्रिय अनुसंधान'
+                    : caseData.status === 'open'
+                      ? 'खुला'
+                      : caseData.status === 'closed'
+                        ? 'निस्तारित'
+                        : caseData.status?.replace('_', ' ')
+                  : caseData.status?.replace('_', ' ')}
+              </Badge>
+              <Badge className="uppercase tracking-micro !text-[10px]">
+                {lang === 'hi'
+                  ? caseData.classification === 'secret'
+                    ? 'अति गोपनीय (SECRET)'
+                    : caseData.classification === 'confidential'
+                      ? 'गोपनीय (CONFIDENTIAL)'
+                      : caseData.classification === 'restricted'
+                        ? 'प्रतिबंधित (RESTRICTED)'
+                        : caseData.classification
+                  : caseData.classification}
+              </Badge>
             </div>
             <h1 className="text-[26px] mt-1.5">{caseData.title}</h1>
           </div>

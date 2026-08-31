@@ -4,6 +4,7 @@ import { FileSearch, MapPin, ShieldAlert, Upload } from 'lucide-react';
 import { get, postForm } from '../../lib/api';
 import { Badge, Button, Card, EmptyState, ErrorState, Spinner } from '../ui';
 import { ENTITY_COLOURS, formatBytes, formatDateTime } from '../../lib/utils';
+import { useI18n } from '../../lib/i18n';
 
 const CLASS_STYLES = {
   executable: 'bg-destructive/12 text-destructive border-destructive/30',
@@ -29,6 +30,7 @@ export function ForensicsTab({ caseId }) {
   const queryClient = useQueryClient();
   const fileRef = useRef(null);
   const [error, setError] = useState(null);
+  const { t, lang } = useI18n();
 
   const { data, isLoading, error: loadError, refetch } = useQuery({
     queryKey: ['forensics', caseId],
@@ -72,34 +74,36 @@ export function ForensicsTab({ caseId }) {
           }}
         />
         <Upload className="size-6 text-muted-foreground/50 mx-auto" />
-        <p className="text-[15px] font-semibold text-foreground mt-3">Drop any file for analysis</p>
+        <p className="text-sm font-medium text-foreground mt-2">
+          {lang === 'hi' ? 'डिजिटल साक्ष्य / फ़ाइल फोरेंसिक जाँच हेतु अपलोड करें' : 'Drop a digital evidence file for forensic intake, or'}
+        </p>
         <Button
           variant="secondary"
           size="sm"
-          className="mt-3"
+          className="mt-2"
           loading={analyseMutation.isPending}
           onClick={() => fileRef.current?.click()}
         >
-          Choose a file
+          {lang === 'hi' ? 'फ़ाइल चुनें (Choose File)' : 'Choose a file'}
         </Button>
-        <p className="text-[13px] text-muted-foreground mt-3 max-w-lg mx-auto leading-relaxed">
-          Hashes it three ways, identifies the real format from its magic bytes rather than its
-          extension, reads EXIF, and pulls selectors out of the content. Extracted indicators enter
-          the case graph unverified.
+        <p className="text-xs text-muted-foreground mt-2">
+          {lang === 'hi'
+            ? 'क्रिप्टोग्राफ़िक हैश (MD5/SHA1/SHA256), मैजिक बाइट प्रकार पहचान, EXIF जीपीएस स्थान एवं संदेहास्पद आईपी/ईमेल इंडिकेटर निष्कर्षण।'
+            : 'Hashes three ways, detects true MIME from magic bytes (flags renamed files), extracts EXIF GPS and embedded indicators.'}
         </p>
-        {error && <p className="text-[13px] text-destructive mt-3">{error}</p>}
+        {error && <p className="text-xs text-destructive mt-2">{error}</p>}
       </Card>
 
       {analyseMutation.isPending && <Spinner label="Hashing, identifying and extracting" />}
-      {isLoading && <Spinner label="Loading artefacts" />}
+      {isLoading && <Spinner label={lang === 'hi' ? 'फोरेंसिक रिकॉर्ड लोड हो रहे हैं...' : 'Loading forensics'} />}
       {loadError && <ErrorState error={loadError} onRetry={refetch} />}
 
       {data?.artifacts.length === 0 && !analyseMutation.isPending && (
         <Card>
           <EmptyState
             icon={FileSearch}
-            title="No artefacts analysed on this case"
-            description="Upload a file above to hash it and extract its indicators."
+            title={lang === 'hi' ? 'इस केस में अभी कोई फोरेंसिक परीक्षण दर्ज नहीं है' : 'No forensic records on this case yet'}
+            description={lang === 'hi' ? 'ऊपर से संदिग्ध फ़ाइल अपलोड कर फोरेंसिक जाँच आरंभ करें।' : 'Upload an image, binary or archive above to run forensic intake on it.'}
           />
         </Card>
       )}

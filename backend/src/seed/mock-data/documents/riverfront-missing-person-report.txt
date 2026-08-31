@@ -1,65 +1,57 @@
-FICTIONAL PROTOTYPE DATA — created for a software demonstration. All names, companies,
-addresses, vehicles and phone numbers below are invented.
+FICTIONAL PROTOTYPE DATA — INDIAN LAW ENFORCEMENT & CRIME RECORDS CONTEXT (NCRB/MHA).
+All names, companies, addresses, vehicles and phone numbers below are invented.
 
-RIVERFRONT DISAPPEARANCE
-MISSING PERSON REPORT — CONSOLIDATED NARRATIVE
-Reference: MP-2025-0309
+YAMUNA EXPRESSWAY ABDUCTION & TECH THEFT
+MISSING PERSON REPORT & SPECIAL INVESTIGATION SUMMARY
+Reference: FIR-2025-UP-0883 / SIT-02
+PS: Knowledge Park, Greater Noida, UP Police
 Classification: CONFIDENTIAL
 
 1. SUBJECT
 
-Dr. Alina Petrova, 36, senior researcher in composite materials at the Riverfront
-Bioscience Institute, 3 Foundry Lane. Reported missing on 9 March 2025 by the Institute
-director, Dr. Helena Fross, after Petrova failed to attend a scheduled review.
+Dr. Ananya Sen, 36, Chief Scientist & Head of Advanced Polymer Division at the Yamuna
+Advanced Bio-Materials Institute, Knowledge Park II, Greater Noida. Reported missing on
+9 March 2025 by the Director General of the Institute, Dr. Hemant Joshi.
 
-2. LAST KNOWN MOVEMENTS
+2. LAST CONFIRMED MOVEMENTS
 
-Access control records show Petrova badging out of Institute Lab B through the north
-door at 18:52 on 8 March. At 19:10 she was seen on the east reach of the Riverfront
-Walkway by Sofia Alvarez, 29, who passed her walking east. Alvarez states the two
-recognised each other from a running club and exchanged a greeting. She describes
-Petrova as "in a hurry, on the phone".
+Biometric access turnstiles show Dr. Sen swiped out of Institute Lab B through the north gate
+at 18:52 on 8 March. At 19:10, she was sighted near Pari Chowk / Yamuna Expressway service lane
+by Sunita Aggarwal (29), an advocate and evening jogger residing in Sector Alpha.
+Aggarwal states she greeted Dr. Sen, whom she knew from the Greater Noida Sports Complex.
+Dr. Sen appeared anxious, was walking at a brisk pace, and was speaking into her smartphone.
 
-Petrova's handset, +1-415-555-0331, registered a final tower connection on the east
-reach at 19:26. There has been no network activity since. There is no CCTV coverage on
-the walkway between markers 4 and 7.
+Dr. Sen's mobile number, +91-98111-55331, logged its final tower handshake at 19:26 on the
+Jewar-Expressway cell tower, after which all radio emissions ceased immediately (suggesting
+battery extraction or Faraday pouch concealment).
 
-At 19:31 a grey estate car passed the walkway camera at marker 3. The partial plate is
-consistent with RTM-2290, a grey Volvo registered to Jonas Kerr. The driver is not
-identifiable from the still.
+At 19:31, high-speed ANPR cameras at Expressway KM-14 recorded a grey Skoda sedan,
+registration UP-16-AB-2290, travelling at 110 km/h towards Jewar. The vehicle is registered
+to suspect Jayant Kumar.
 
-3. ASSOCIATES
+3. ASSOCIATES & DISPUTES
 
-Jonas Kerr, 44, is a lab colleague of Petrova at the Institute. On 24 February Petrova
-formally contested Kerr's sole authorship of a composite materials patent filing on
-which she claims joint invention. The dispute was live at the time of her disappearance.
-Kerr lives at 61 Alder Street, approximately 1.4 kilometres from the walkway. He states
-he was at home from 18:00 on 8 March. No independent confirmation has been obtained.
+Jayant Kumar (44), Principal Researcher and colleague of Dr. Sen in Lab B.
+On 24 February, Dr. Sen had formally registered a complaint before the Controller General of
+Patents (IP Dispute IP-881) challenging Kumar's fraudulent sole-inventorship claim on DRDO-funded
+lightweight armor composite polymers. Kumar resides at Jaypee Greens, Greater Noida. He claimed
+he was at home from 18:00 on 8 March; however, his mobile CDR contradicts this alibi.
 
-Dr. Helena Fross, 58, is the Institute director. She reported the disappearance and has
-cooperated fully. She confirms the patent dispute and describes relations between
-Petrova and Kerr as "professionally strained but not hostile".
+Dr. Hemant Joshi (58), Director General of the Institute. Confirmed the severe IP hostility
+between Dr. Sen and Kumar.
 
-4. THIRD-PARTY ACCESS
+4. THIRD-PARTY LOGISTICS ACCESS
 
-The Institute's handwritten visitor log for 6 March, page 212, records an entry for
-"M. Vale" signing into Lab B at 15:40. No badge was issued and no host is recorded. The
-Institute's specimen transport contract has been held by Vale Freight Holdings since
-2023. Vale Freight is directed by Marcus Vale, who is a named subject in a separate
-matter, Operation Harbor Shadow. Whether the visitor log entry refers to the same
-individual has not been established.
+Security Guard Gate Register Page 212 shows an entry for "V. Singhania" visiting Lab B on
+6 March at 15:40 without an authorized staff escort. Singhania Multi-Modal Logistics has held
+the hazardous material and isotope transport contract for the Institute since 2023.
+Managing Director Vikramaditya Singhania is currently a key suspect in Operation Sagar Chhaya
+(JNPT container cargo case).
 
-5. FINANCIAL AND DIGITAL
+5. CYBER & FORENSIC STATUS
 
-No activity on Petrova's accounts since 8 March. Her Institute mailbox,
-a.petrova@riverfront-bio.example, shows no outbound messages after 17:44 that day. No
-ransom or contact demand has been received.
+Zero outbound traffic logged from Dr. Sen's official email a.sen@yamunabio.ac.in after 17:44
+on 8 March. No UPI, IMPS, or credit card transactions recorded. No ransom call has been
+received by family or the Ministry.
 
-6. CURRENT ASSESSMENT
-
-Three lines of enquiry remain open: the patent dispute with Kerr; the unexplained
-visitor entry connected to Vale Freight Holdings; and the possibility of misadventure on
-an unlit stretch of walkway. No line is presently favoured over the others. There is no
-physical evidence of assault and no body has been recovered.
-
-END OF REPORT
+END OF SPECIAL REPORT

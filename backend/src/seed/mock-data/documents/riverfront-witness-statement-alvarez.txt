@@ -1,46 +1,39 @@
-FICTIONAL PROTOTYPE DATA — created for a software demonstration. All names, companies,
-addresses, vehicles and phone numbers below are invented.
+FICTIONAL PROTOTYPE DATA — INDIAN LAW ENFORCEMENT & CRIME RECORDS CONTEXT (NCRB/MHA).
+All names, companies, addresses, vehicles and phone numbers below are invented.
 
-RIVERFRONT DISAPPEARANCE
-WITNESS STATEMENT — S. ALVAREZ
+YAMUNA EXPRESSWAY ABDUCTION & TECH THEFT
+WITNESS STATEMENT UNDER SECTION 161 CrPC
 Reference: WS-11
-Date taken: 10 March 2025
+Date: 10 March 2025
+Recording Officer: Sub-Inspector R. K. Yadav, Knowledge Park PS
+Witness: Sunita Aggarwal (29), D/o R. P. Aggarwal, Advocate, Sector Alpha 1, Greater Noida
 Classification: CONFIDENTIAL
 
-Statement of Sofia Alvarez, 29, of 4 Weir Court.
+Statement:
 
-I run the riverfront most evenings, usually starting around seven o'clock from the
-bridge end and going east along the walkway.
+I regularly go for an evening jog along the Yamuna Expressway service road, usually starting
+around 7:00 PM near the Pari Chowk round-about and running southwards.
 
-On Saturday 8 March I started a little later than usual, maybe five past seven. I passed
-a woman walking east near the east reach. I recognised her from the running club — I
-knew her as Alina. We nodded at each other. She was on her phone and she was walking
-fast, faster than her usual pace. She looked like she was trying to get somewhere.
+On Saturday, 8 March, I started around 7:05 PM. Around 7:10 PM, near the service lane junction,
+I crossed a woman walking briskly. I recognized her as Dr. Ananya Sen from the badminton court
+at the Greater Noida Sports Complex. We nodded at each other. She was on a phone call and
+seemed very stressed and in a tremendous hurry.
 
-I did not hear what she was saying. I did not see anyone with her and I did not see
-anyone following her.
+I did not hear the conversation. I did not notice anyone immediately walking with her, but
+traffic along the expressway was heavy.
 
-I checked my watch shortly after passing her because I was behind my usual time. It was
-ten past seven.
+I checked my smartwatch shortly after passing her to track my pace; it was exactly 7:10 PM.
 
-I carried on east as far as marker 8 and turned back. On the way back I did not see her
-again. That would have been around half past seven. I do not remember any cars stopping,
-but the walkway is set back from the road there and I had headphones in.
+I completed my loop and returned towards Pari Chowk by 7:35 PM. I did not see Dr. Sen again.
 
-I did not know Alina well. We had spoken at the club a few times about training. I did
-not know where she worked until I read about it afterwards.
+I had no personal enmity or business dealings with Dr. Sen or her workplace.
 
-I have not been shown any photographs and I have not been asked to identify anyone.
+This statement is given truthfully to UP Police.
 
-This statement is true to the best of my knowledge and belief.
+(Sunita Aggarwal)
 
-S. Alvarez
-
-OFFICER'S NOTE
-
-Alvarez's timing is corroborated by her fitness tracker export, which places her at the
-east reach at 19:09 and at marker 8 at 19:24. Her account of Petrova's direction of
-travel is consistent with the final handset ping at 19:26. Alvarez has no prior
-connection to Jonas Kerr or to the Institute.
+OFFICER'S NOTE:
+Witness timing is corroborated by GPS export from her Garmin smartwatch (showing location at
+KM-11 at 19:09:44). Direction of travel aligns with Dr. Sen's last cell tower connection.
 
 END OF STATEMENT

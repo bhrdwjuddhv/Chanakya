@@ -9,6 +9,7 @@ import { EdgeInspector, NodeInspector } from '../graph/NodeInspector';
 import { InfluencerPanel } from './InfluencerPanel';
 import { Button, EmptyState, ErrorState, Select, Spinner } from '../ui';
 import { ENTITY_COLOURS, STATUS_STYLES, cn } from '../../lib/utils';
+import { useI18n } from '../../lib/i18n';
 
 const ENTITY_TYPES = Object.keys(ENTITY_COLOURS).filter((t) => t !== 'Case');
 
@@ -16,6 +17,7 @@ export function GraphTab({ caseId }) {
   const user = useAuth((s) => s.user);
   const queryClient = useQueryClient();
   const graphRef = useRef(null);
+  const { t, lang } = useI18n();
 
   const [types, setTypes] = useState([]);
   const [statuses, setStatuses] = useState([]);

@@ -5,12 +5,7 @@ import { get, patch, post, getToken } from '../../lib/api';
 import { useAuth, can } from '../../lib/auth';
 import { Badge, Button, Card, EmptyState, ErrorState, Select, Spinner } from '../ui';
 import { formatDateTime } from '../../lib/utils';
-
-const TYPES = [
-  { value: 'case_summary', label: 'Case summary' },
-  { value: 'network_analysis', label: 'Network analysis' },
-  { value: 'evidence_register', label: 'Evidence register' },
-];
+import { useI18n } from '../../lib/i18n';
 
 const STATUS_STYLES = {
   draft: 'bg-warning/12 text-warning border-warning/25',
@@ -23,6 +18,7 @@ export function ReportsTab({ caseId }) {
   const queryClient = useQueryClient();
   const [type, setType] = useState('case_summary');
   const [openId, setOpenId] = useState(null);
+  const { t, lang } = useI18n();
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['reports', caseId],
@@ -37,28 +33,34 @@ export function ReportsTab({ caseId }) {
     },
   });
 
+  const getReportTypes = () => [
+    { value: 'case_summary', label: lang === 'hi' ? 'केस अनुसंधान सारांश (Case Summary)' : 'Case summary' },
+    { value: 'network_analysis', label: lang === 'hi' ? 'आपराधिक नेटवर्क विश्लेषण रिपोर्ट' : 'Network analysis' },
+    { value: 'evidence_register', label: lang === 'hi' ? 'साक्ष्य जब्ती रजिस्टर (Evidence Register)' : 'Evidence register' },
+  ];
+
   return (
     <div className="mx-auto max-w-[1200px] p-6 space-y-5">
       <Card className="p-5">
         <div className="flex flex-wrap items-end gap-3">
           <div>
-            <label className="label block mb-2">Report type</label>
+            <label className="label block mb-2">{lang === 'hi' ? 'रिपोर्ट प्रकार' : 'Report type'}</label>
             <Select value={type} onChange={(e) => setType(e.target.value)}>
-              {TYPES.map((t) => (
-                <option key={t.value} value={t.value}>
-                  {t.label}
+              {getReportTypes().map((tItem) => (
+                <option key={tItem.value} value={tItem.value}>
+                  {tItem.label}
                 </option>
               ))}
             </Select>
           </div>
           <Button loading={generateMutation.isPending} onClick={() => generateMutation.mutate()}>
-            <FileText className="size-3.5" /> Generate
+            <FileText className="size-3.5" /> {lang === 'hi' ? 'रिपोर्ट तैयार करें (Generate)' : 'Generate'}
           </Button>
         </div>
         <p className="text-[13px] text-muted-foreground mt-3 max-w-3xl leading-relaxed">
-          Assembled from the stored record — every line carries the source it came from. Recorded fact,
-          evidence, computed findings and open questions are kept in separate sections, and any AI prose
-          sits apart from all of them.
+          {lang === 'hi'
+            ? 'दर्ज केस रिकॉर्ड और फोरेंसिक से स्वतः संकलित - प्रत्येक तथ्य अपने साक्ष्य संदर्भ के साथ। एआई जनित अंश स्पष्ट रूप से चिह्नित रहते हैं।'
+            : 'Assembled from the stored record — every line carries the source it came from. Recorded fact, evidence, computed findings and open questions are kept in separate sections, and any AI prose sits apart from all of them.'}
         </p>
         {generateMutation.error && (
           <p className="text-[13px] text-destructive mt-3">{generateMutation.error.message}</p>

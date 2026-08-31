@@ -3,16 +3,18 @@ import { Activity } from 'lucide-react';
 import { get } from '../../lib/api';
 import { Badge, Card, EmptyState, ErrorState, Spinner, Table, Td, Th, Tr } from '../ui';
 import { formatDateTime } from '../../lib/utils';
+import { useI18n } from '../../lib/i18n';
 
 /** Append-only history. Everything sensitive the app does lands here. */
 export function AuditTab({ caseId }) {
+  const { t, lang } = useI18n();
   const path = caseId ? `/cases/${caseId}/audit` : '/audit?limit=200';
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['audit', caseId || 'all'],
     queryFn: () => get(path),
   });
 
-  if (isLoading) return <Spinner label="Loading audit trail" />;
+  if (isLoading) return <Spinner label={lang === 'hi' ? 'ऑडिट लॉग लोड हो रहा है...' : 'Loading audit trail'} />;
   if (error) return <ErrorState error={error} onRetry={refetch} />;
 
   const entries = data?.entries || [];
@@ -22,8 +24,8 @@ export function AuditTab({ caseId }) {
         <Card>
           <EmptyState
             icon={Activity}
-            title="No recorded activity"
-            description="Actions such as uploads, AI queries and confirmations are logged here as they happen."
+            title={lang === 'hi' ? 'कोई गतिविधि दर्ज नहीं है' : 'No recorded activity'}
+            description={lang === 'hi' ? 'साक्ष्य अपलोड, एआई प्रश्नोत्तर एवं पुष्टि जैसी संवेदनशील कार्रवाइयां यहाँ स्थायी रूप से दर्ज होती हैं।' : 'Actions such as uploads, AI queries and confirmations are logged here as they happen.'}
           />
         </Card>
       </div>
@@ -36,10 +38,10 @@ export function AuditTab({ caseId }) {
         <Table>
           <thead>
             <tr className="border-b border-border">
-              <Th>When</Th>
-              <Th>Who</Th>
-              <Th>Action</Th>
-              <Th>Resource</Th>
+              <Th>{lang === 'hi' ? 'समय / दिनांक' : 'When'}</Th>
+              <Th>{lang === 'hi' ? 'अधिकारी / यूज़र' : 'Who'}</Th>
+              <Th>{lang === 'hi' ? 'कार्रवाई (Action)' : 'Action'}</Th>
+              <Th>{lang === 'hi' ? 'संसाधन (Resource)' : 'Resource'}</Th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +51,7 @@ export function AuditTab({ caseId }) {
                   {formatDateTime(entry.timestamp)}
                 </Td>
                 <Td>
-                  <span className="text-[13px] text-foreground">{entry.userName || 'system'}</span>
+                  <span className="text-[13px] text-foreground">{entry.userName || (lang === 'hi' ? 'सिस्टम' : 'system')}</span>
                   {entry.role && <span className="label ml-2 !text-[10px]">{entry.role}</span>}
                 </Td>
                 <Td>

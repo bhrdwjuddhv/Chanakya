@@ -5,6 +5,7 @@ import { get, postForm } from '../../lib/api';
 import { useAuth, can } from '../../lib/auth';
 import { Badge, Button, Card, CardHeader, EmptyState, ErrorState, Spinner } from '../ui';
 import { BiometricMatchCard } from './BiometricMatchCard';
+import { useI18n } from '../../lib/i18n';
 
 export function FaceSearchPanel({ caseId }) {
   const user = useAuth((s) => s.user);
@@ -12,6 +13,7 @@ export function FaceSearchPanel({ caseId }) {
   const fileRef = useRef(null);
   const [result, setResult] = useState(null);
   const [preview, setPreview] = useState(null);
+  const { t, lang } = useI18n();
 
   const status = useQuery({ queryKey: ['face-status'], queryFn: () => get('/biometrics/face/status') });
 
@@ -32,25 +34,17 @@ export function FaceSearchPanel({ caseId }) {
     searchMutation.mutate(file);
   }
 
-  if (status.isLoading) return <Spinner label="Checking the face engine" />;
+  if (status.isLoading) return <Spinner label={lang === 'hi' ? 'बायोमेट्रिक इंजन स्थिति जांची जा रही है...' : 'Checking the face engine'} />;
   if (status.error) return <ErrorState error={status.error} onRetry={status.refetch} />;
 
   if (!status.data.ok) {
     return (
       <Card className="p-5">
         <ScanFace className="size-6 text-muted-foreground/50" />
-        <h3 className="text-sm font-semibold text-foreground mt-3">Face engine unavailable</h3>
+        <h3 className="text-sm font-semibold text-foreground mt-3">{lang === 'hi' ? 'चेहरा पहचान इंजन अनुपलब्ध' : 'Face engine unavailable'}</h3>
         <p className="text-sm text-muted-foreground mt-1.5">
-          Search is disabled rather than faked. Reported: {status.data.error}
+          {status.data.error}
         </p>
-        <div className="mt-3 space-y-1">
-          <code className="block text-[11px] font-mono bg-black text-[#DBDBDB] rounded-control px-2.5 py-1.5">
-            docker compose run --rm models
-          </code>
-          <code className="block text-[11px] font-mono bg-black text-[#DBDBDB] rounded-control px-2.5 py-1.5">
-            docker compose up -d insightface
-          </code>
-        </div>
       </Card>
     );
   }
@@ -58,6 +52,39 @@ export function FaceSearchPanel({ caseId }) {
   const enrolled = status.data.enrolled || [];
 
   return (
+    <div className="space-y-6">
+      <div className="grid gap-6 lg:grid-cols-3">
+        <Card className="p-6 text-center border-dashed border-2 hover:border-primary/40 transition-colors">
+          <input
+            ref={fileRef}
+            type="file"
+            className="hidden"
+            accept="image/*"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              onFile(file);
+              e.target.value = '';
+            }}
+          />
+          <ScanFace className="size-7 text-muted-foreground/50 mx-auto" />
+          <p className="text-sm font-medium text-foreground mt-2">
+            {lang === 'hi' ? 'संदिग्ध का चेहरा फ़ोटो यहाँ अपलोड करें' : 'Drop a probe photo to search'}
+          </p>
+          <Button
+            variant="secondary"
+            size="sm"
+            className="mt-2"
+            loading={searchMutation.isPending}
+            onClick={() => fileRef.current?.click()}
+          >
+            {lang === 'hi' ? 'फ़ोटो चुनें (Choose photo)' : 'Choose a photo'}
+          </Button>
+          <p className="text-xs text-muted-foreground mt-2">
+            {lang === 'hi'
+              ? 'InsightFace buffalo_l (512-आयामी एम्बेडिंग)। दर्ज Suspect गैलरी में कोसाइन सिमिलैरिटी १:एन मिलान।'
+              : 'Searched against every enrolled suspect. The score is cosine similarity on 512-d embeddings.'}
+          </p>
+        </Card>
     <div className="grid gap-4 lg:grid-cols-3">
       <div className="lg:col-span-2 space-y-4">
         <Card

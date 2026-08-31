@@ -34,16 +34,16 @@ const DOCS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'moc
 // evidence list is populated even when no AI key is configured.
 const DOCUMENTS = {
   'CASE-2025-001': [
-    { file: 'harbor-shadow-surveillance-log.txt', summary: 'Consolidated surveillance covering seven cargo thefts at Pier 14. Places Sokolov at the loading bay, links the white box truck WGT-4417 to the Northside yard, and assesses Vale as the coordinating figure on positional evidence rather than direct action.' },
-    { file: 'harbor-shadow-interview-nguyen.txt', summary: 'Interview with night-shift clerk Tommy Nguyen. Admits two meetings with Dmitri Sokolov and volunteers a link between Sokolov and Vale Freight. Denies knowledge of the thefts; account is not contradicted by evidence held.' },
+    { file: 'harbor-shadow-surveillance-log.txt', summary: 'Consolidated surveillance covering seven container diversions at JNPT CFS Yard 4. Places Devendra Shukla at the loading bay, links container truck MH-06-BW-4417 to the Kalamboli Scrap Yard, and assesses Vikramaditya Singhania as the coordinating kingpin on positional intelligence.' },
+    { file: 'harbor-shadow-interview-nguyen.txt', summary: 'Statement under Sec 161 CrPC of night-shift clerk Tanmay Nambiar. Admits two meetings with Devendra Shukla and links Shukla to Singhania Multi-Modal. Denies knowledge of container tampering.' },
   ],
   'CASE-2025-002': [
-    { file: 'riverfront-missing-person-report.txt', summary: 'Consolidated missing person narrative for Dr. Alina Petrova. Documents her 18:52 lab exit, the 19:10 sighting by Sofia Alvarez, the 19:26 handset blackout, and an unexplained "M. Vale" visitor entry connected to Vale Freight Holdings.' },
-    { file: 'riverfront-witness-statement-alvarez.txt', summary: 'Statement of Sofia Alvarez, the last person to see Petrova. Places her on the east reach at 19:10, walking east and on the phone. Timing corroborated by a fitness tracker export.' },
+    { file: 'riverfront-missing-person-report.txt', summary: 'Consolidated missing person narrative for Dr. Ananya Sen. Documents her 18:52 lab exit, the 19:10 sighting by Sunita Aggarwal at Pari Chowk, the 19:26 handset blackout, and an unexplained "V. Singhania" visitor entry connected to Singhania Multi-Modal.' },
+    { file: 'riverfront-witness-statement-alvarez.txt', summary: 'Statement of Sunita Aggarwal, the last person to see Dr. Sen. Places her on the Yamuna Expressway service road at 19:10, walking east and on the phone. Timing corroborated by smartwatch GPS export.' },
   ],
   'CASE-2025-003': [
-    { file: 'ledger-glass-audit-memo.txt', summary: 'Internal audit memo by Grace Tan. Records that three unconnected vendors all pay the same entity, Ledger Glass Consulting, whose sole officer is Iris Delacroix and whose registered address has no office or staff.' },
-    { file: 'ledger-glass-call-data-analysis.txt', summary: 'Call data summary. The procurement side and vendor side never contact each other directly; both contact the Delacroix handset, which is the only communication path between them. Explicitly a structural observation, not a finding of wrongdoing.' },
+    { file: 'ledger-glass-audit-memo.txt', summary: 'Vigilance audit memo by Gita Trivedi. Records that unrelated contractors all transfer kickbacks to Kanch Consultancy Services LLP, whose sole partner is Isha Deshmukh and whose registered address is a virtual mail suite.' },
+    { file: 'ledger-glass-call-data-analysis.txt', summary: 'CDR telecom summary. The municipal procurement officers and private contractors never contact each other directly; both contact Isha Deshmukh (+91-98100-55288), the sole communication bridge between them.' },
   ],
 };
 

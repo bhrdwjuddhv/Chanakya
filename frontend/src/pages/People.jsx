@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Search, Users } from 'lucide-react';
 import { get } from '../lib/api';
+import { useI18n } from '../lib/i18n';
 import { PageHeader } from '../components/layout/PageHeader';
 import { Badge, Card, EmptyState, ErrorState, Input, Spinner } from '../components/ui';
 import { ENTITY_COLOURS } from '../lib/utils';
 
 export function People() {
   const [q, setQ] = useState('');
+  const { t, lang } = useI18n();
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['persons', 'all', q],
     queryFn: () => get(`/persons${q ? `?q=${encodeURIComponent(q)}` : ''}`),
@@ -20,14 +22,18 @@ export function People() {
   return (
     <div className="flex-1 overflow-y-auto">
       <PageHeader
-        eyebrow="Workspace"
-        title="People"
-        description="Everyone on file, across every case. People appearing in more than one case are flagged."
+        eyebrow={t('workspace', 'Workspace')}
+        title={t('people', 'People')}
+        description={
+          lang === 'hi'
+            ? 'दर्ज समस्त संदिग्ध अभियुक्त, गवाह एवं संशयित व्यक्ति। एकाधिक मामलों में सक्रिय व्यक्तियों को विशेष रूप से चिह्नित किया गया है।'
+            : 'Everyone on file, across every case. People appearing in more than one case are flagged.'
+        }
       >
         <div className="relative max-w-sm mt-4">
           <Search className="size-3.5 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
           <Input
-            placeholder="Search by name or alias"
+            placeholder={lang === 'hi' ? 'नाम या उपनाम (उर्फ़/Alias) से खोजें...' : 'Search by name or alias'}
             className="pl-8"
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -36,14 +42,14 @@ export function People() {
       </PageHeader>
 
       <div className="mx-auto max-w-[1200px] p-6 space-y-4">
-        {isLoading && <Spinner label="Loading people" />}
+        {isLoading && <Spinner label={t('processing', 'Loading people')} />}
         {error && <ErrorState error={error} onRetry={refetch} />}
 
         {crossCase.length > 0 && (
           <div className="rounded-control border border-warning/25 bg-warning/12 px-3 py-2 text-xs text-warning">
-            {crossCase.length} {crossCase.length === 1 ? 'person appears' : 'people appear'} in more than one case:{' '}
-            {crossCase.map((p) => p.name).join(', ')}. Shared entities are often where separate investigations
-            actually connect.
+            {lang === 'hi'
+              ? `${crossCase.length} व्यक्ति एक से अधिक आपराधिक मामलों में दर्ज हैं: ${crossCase.map((p) => p.name).join(', ')}। ऐसे साझा सूत्र अक्सर अंतर-राज्यीय सिंडिकेट कनेक्शन को उजागर करते हैं।`
+              : `${crossCase.length} ${crossCase.length === 1 ? 'person appears' : 'people appear'} in more than one case: ${crossCase.map((p) => p.name).join(', ')}. Shared entities are often where separate investigations actually connect.`}
           </div>
         )}
 

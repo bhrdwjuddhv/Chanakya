@@ -5,6 +5,7 @@ import { get, post } from '../../lib/api';
 import { useAuth, can } from '../../lib/auth';
 import { Badge, Button, Card, EmptyState, Input, Select, Spinner } from '../ui';
 import { ENTITY_COLOURS } from '../../lib/utils';
+import { useI18n } from '../../lib/i18n';
 
 const KINDS = ['name', 'email', 'phone', 'username', 'company'];
 
@@ -15,6 +16,7 @@ export function OsintTab({ caseId }) {
   const [kind, setKind] = useState('name');
   const [sources, setSources] = useState([]);
   const [result, setResult] = useState(null);
+  const { t, lang } = useI18n();
 
   const connectorQuery = useQuery({ queryKey: ['osint-connectors'], queryFn: () => get('/osint/connectors') });
 
@@ -24,6 +26,18 @@ export function OsintTab({ caseId }) {
   });
 
   const connectors = connectorQuery.data?.connectors || [];
+
+  const getKindLabel = (k) => {
+    if (lang !== 'hi') return k;
+    const map = {
+      name: 'नाम (Name)',
+      email: 'ईमेल (Email)',
+      phone: 'फ़ोन नंबर (Phone)',
+      username: 'यूज़रनेम (Username)',
+      company: 'कंपनी / कॉर्पोरेट MCA-21 (Company)',
+    };
+    return map[k] || k;
+  };
 
   return (
     <div className="mx-auto max-w-[1200px] p-6 space-y-5">
@@ -36,28 +50,30 @@ export function OsintTab({ caseId }) {
           }}
         >
           <div className="flex-1 min-w-64">
-            <label className="label block mb-2">Selector</label>
+            <label className="label block mb-2">{lang === 'hi' ? 'खोज चयनकर्ता (Selector)' : 'Selector'}</label>
             <div className="relative">
               <Search className="size-3.5 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
               <Input
                 className="pl-8"
-                placeholder="A name, email, phone number or company"
+                placeholder={lang === 'hi' ? 'नाम, ईमेल, फ़ोन नंबर, वाहन RC अथवा MCA-21 कंपनी नाम...' : 'A name, email, phone number or company'}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
             </div>
           </div>
           <div>
-            <label className="label block mb-2">Kind</label>
+            <label className="label block mb-2">{lang === 'hi' ? 'प्रकार (Kind)' : 'Kind'}</label>
             <Select value={kind} onChange={(e) => setKind(e.target.value)}>
               {KINDS.map((k) => (
                 <option key={k} value={k}>
-                  {k}
+                  {getKindLabel(k)}
                 </option>
               ))}
             </Select>
           </div>
           <Button type="submit" loading={searchMutation.isPending} disabled={query.trim().length < 2}>
+            {lang === 'hi' ? 'ओपन-सोर्स खोज करें' : 'Run OSINT query'}
+          </Button>
             Search sources
           </Button>
         </form>

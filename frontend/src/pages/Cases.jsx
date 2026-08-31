@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { FolderOpen, Plus, Search, X } from 'lucide-react';
 import { get, post } from '../lib/api';
+import { useI18n } from '../lib/i18n';
 import { PageHeader } from '../components/layout/PageHeader';
 import {
   Badge,
@@ -18,6 +19,7 @@ import {
 import { PRIORITY_STYLES, formatDate } from '../lib/utils';
 
 export function Cases() {
+  const { t } = useI18n();
   const [filters, setFilters] = useState({ q: '', status: '', priority: '' });
   const [creating, setCreating] = useState(false);
 
@@ -30,12 +32,12 @@ export function Cases() {
   return (
     <div className="flex-1 overflow-y-auto">
       <PageHeader
-        eyebrow="Workspace"
-        title="Cases"
-        description="Every investigation on this instance."
+        eyebrow={t('workspace', 'Workspace')}
+        title={t('allCases', 'Cases')}
+        description={t('casesSubtitle', 'Every investigation on this instance.')}
         actions={
           <Button size="md" onClick={() => setCreating(true)}>
-            <Plus className="size-3.5" /> New case
+            <Plus className="size-3.5" /> {t('newCase', 'New case')}
           </Button>
         }
       >
@@ -43,14 +45,14 @@ export function Cases() {
           <div className="relative flex-1 min-w-56 max-w-sm">
             <Search className="size-3.5 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
             <Input
-              placeholder="Search title or case number"
+              placeholder={t('searchCases', 'Search title or case number')}
               className="pl-8"
               value={filters.q}
               onChange={(e) => setFilters({ ...filters, q: e.target.value })}
             />
           </div>
           <Select value={filters.status} onChange={(e) => setFilters({ ...filters, status: e.target.value })}>
-            <option value="">Any status</option>
+            <option value="">{t('status', 'Status')}: All</option>
             {['open', 'active', 'pending_review', 'closed', 'cold'].map((s) => (
               <option key={s} value={s}>
                 {s.replace('_', ' ')}

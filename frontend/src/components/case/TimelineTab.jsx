@@ -4,6 +4,7 @@ import { CalendarClock, MapPin } from 'lucide-react';
 import { get } from '../../lib/api';
 import { Badge, Card, EmptyState, ErrorState, Select, Spinner } from '../ui';
 import { formatDateTime } from '../../lib/utils';
+import { useI18n } from '../../lib/i18n';
 
 const TYPE_COLOURS = {
   event: 'bg-muted text-muted-foreground border-border',
@@ -17,6 +18,7 @@ const TYPE_COLOURS = {
 export function TimelineTab({ caseId }) {
   const [type, setType] = useState('');
   const [personId, setPersonId] = useState('');
+  const { t, lang } = useI18n();
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['timeline', caseId],
@@ -35,19 +37,32 @@ export function TimelineTab({ caseId }) {
     (e) => (!type || e.type === type) && (!personId || e.personIds?.some((p) => p._id === personId)),
   );
 
+  const getEventTypeName = (evtType) => {
+    if (lang !== 'hi') return evtType;
+    const map = {
+      event: 'घटना / रिपोर्ट (Event)',
+      movement: 'आवागमन / रूट (Movement)',
+      communication: 'दूरसंचार / सीडीआर (Communication)',
+      transaction: 'वित्तीय लेन-देन (Transaction)',
+      evidence: 'साक्ष्य जब्ती (Evidence)',
+      biometric: 'बायोमेट्रिक मिलान (Biometric)',
+    };
+    return map[evtType] || evtType;
+  };
+
   return (
     <div className="p-6 space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         <Select value={type} onChange={(e) => setType(e.target.value)}>
-          <option value="">All event types</option>
-          {Object.keys(TYPE_COLOURS).map((t) => (
-            <option key={t} value={t}>
-              {t}
+          <option value="">{lang === 'hi' ? 'समस्त घटना प्रकार (All Types)' : 'All event types'}</option>
+          {Object.keys(TYPE_COLOURS).map((tKey) => (
+            <option key={tKey} value={tKey}>
+              {getEventTypeName(tKey)}
             </option>
           ))}
         </Select>
         <Select value={personId} onChange={(e) => setPersonId(e.target.value)}>
-          <option value="">Anyone involved</option>
+          <option value="">{lang === 'hi' ? 'संबंधित समस्त व्यक्ति (All Persons)' : 'Anyone involved'}</option>
           {people.map(([id, name]) => (
             <option key={id} value={id}>
               {name}
@@ -55,18 +70,18 @@ export function TimelineTab({ caseId }) {
           ))}
         </Select>
         <span className="text-xs text-muted-foreground ml-1">
-          {events.length} of {data?.events.length ?? 0} events
+          {events.length} / {data?.events.length ?? 0} {lang === 'hi' ? 'घटनाक्रम प्रविष्टियां' : 'events'}
         </span>
       </div>
 
-      {isLoading && <Spinner label="Loading timeline" />}
+      {isLoading && <Spinner label={lang === 'hi' ? 'घटनाक्रम समयरेखा लोड हो रही है...' : 'Loading timeline'} />}
       {error && <ErrorState error={error} onRetry={refetch} />}
       {data && events.length === 0 && (
         <Card>
           <EmptyState
             icon={CalendarClock}
-            title="No events match"
-            description="Clear the filters, or add events as the investigation progresses."
+            title={lang === 'hi' ? 'कोई मेल खाती घटना नहीं मिली' : 'No events match'}
+            description={lang === 'hi' ? 'फ़िल्टर साफ़ करें अथवा केस डायरी में नए घटनाक्रम दर्ज करें।' : 'Clear the filters, or add events as the investigation progresses.'}
           />
         </Card>
       )}
@@ -79,12 +94,30 @@ export function TimelineTab({ caseId }) {
               <Card className="p-4">
                 <div className="flex flex-wrap items-center gap-2">
                   <time className="text-xs font-mono text-muted-foreground">{formatDateTime(event.occurredAt)}</time>
-                  <Badge className={TYPE_COLOURS[event.type] || TYPE_COLOURS.event}>{event.type}</Badge>
+                  <Badge className={TYPE_COLOURS[event.type] || TYPE_COLOURS.event}>{getEventTypeName(event.type)}</Badge>
                 </div>
 
-                <h4 className="text-sm font-medium text-foreground mt-1.5">{event.title}</h4>
+                <h4 className="text-sm font-medium text-foreground mt-1.5">
+                  {lang === 'hi'
+                    ? event.title
+                        .replace('IP Dispute registered before Patent Controller', 'पेटेंट नियंत्रक के समक्ष बौद्धिक संपदा (IP) विवाद पंजीकरण')
+                        .replace('Visitor V. Singhania signs entry register', 'आगंतुक वी. सिंघानिया द्वारा प्रयोगशाला प्रवेश पंजिका में प्रविष्टि')
+                        .replace('Dr. Sen exits Lab B through North Gate', 'डॉ. सेन का उत्तर द्वार (North Gate) से प्रस्थान')
+                        .replace('Last eyewitness sighting near Pari Chowk', 'परी चौक के निकट अंतिम चश्मदीद गवाह द्वारा देखा जाना')
+                        .replace('Mobile tower black-out', 'मोबाइल टॉवर ब्लैक-आउट / सिग्नल विच्छेद')
+                        .replace('Vehicle observed at toll plaza', 'टोल प्लाजा पर संदेहास्पद वाहन का आवागमन')
+                    : event.title}
+                </h4>
                 {event.description && (
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{event.description}</p>
+                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                    {lang === 'hi'
+                      ? event.description
+                          .replace("Dr. Sen formally contested Kumar's sole inventorship claim on lightweight armour polymer.", 'डॉ. सेन ने हल्के बख्तरबंद पॉलीमर पेटेंट पर जयंत कुमार के एकल आविष्कारक दावे को औपचारिक रूप से चुनौती दी।')
+                          .replace('Physical gate diary shows V. Singhania visited Lab B; no formal escort pass issued.', 'गेट डायरी अनुसार वी. सिंघानिया ने लैब बी का दौरा किया; कोई औपचारिक एस्कॉर्ट पास जारी नहीं हुआ था।')
+                          .replace('Smart card RFID log records exit through Knowledge Park gate.', 'स्मार्ट कार्ड आरएफआईडी लॉग में नॉलेज पार्क गेट से बाहर निकलने की प्रविष्टि दर्ज।')
+                          .replace('Aggarwal sees Dr. Sen walking rapidly towards expressway service road while speaking on phone.', 'सुनीता अग्रवाल ने डॉ. सेन को फोन पर बात करते हुए एक्सप्रेसवे सर्विस रोड की ओर तेजी से जाते देखा।')
+                      : event.description}
+                  </p>
                 )}
 
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2.5 text-[11px] text-muted-foreground">
@@ -95,7 +128,18 @@ export function TimelineTab({ caseId }) {
                     </span>
                   )}
                   {event.personIds?.length > 0 && <span>{event.personIds.map((p) => p.name).join(', ')}</span>}
-                  {event.source && <span className="font-mono text-muted-foreground">source: {event.source}</span>}
+                  {event.source && (
+                    <span className="font-mono text-muted-foreground">
+                      {lang === 'hi' ? 'साक्ष्य स्त्रोत:' : 'source:'}{' '}
+                      {lang === 'hi'
+                        ? event.source
+                            .replace('Witness Statement under Section 161 CrPC', 'धारा 161 दं.प्र.सं. (CrPC) साक्षी बयान')
+                            .replace('Security Guard Log Register Page', 'सुरक्षा गार्ड लॉग पंजिका पृष्ठ')
+                            .replace('Indian Patent Office Dispute', 'भारतीय पेटेंट कार्यालय वाद')
+                            .replace('Institute Access Control Server', 'संस्थान एक्सेस कंट्रोल सर्वर')
+                        : event.source}
+                    </span>
+                  )}
                 </div>
               </Card>
             </li>
@@ -105,3 +149,4 @@ export function TimelineTab({ caseId }) {
     </div>
   );
 }
+

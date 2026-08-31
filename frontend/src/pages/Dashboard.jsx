@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { FileStack, FolderOpen, Loader2, Users } from 'lucide-react';
 import { get } from '../lib/api';
 import { useAuth } from '../lib/auth';
+import { useI18n } from '../lib/i18n';
 import { PageHeader } from '../components/layout/PageHeader';
 import { GridReveal } from '../components/layout/GridReveal';
 import { Badge, Card, CardHeader, EmptyState, ErrorState, Spinner, Stat, StatusPill } from '../components/ui';
@@ -10,23 +11,31 @@ import { PRIORITY_STYLES, formatDate } from '../lib/utils';
 
 export function Dashboard() {
   const user = useAuth((s) => s.user);
+  const { t, lang } = useI18n();
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['dashboard'],
     queryFn: () => get('/cases/stats/dashboard'),
   });
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return t('goodMorning', 'Good morning');
+    if (hour < 18) return t('goodAfternoon', 'Good afternoon');
+    return t('goodEvening', 'Good evening');
+  };
 
   return (
     <div className="flex-1 overflow-y-auto">
       <GridReveal />
 
       <PageHeader
-        eyebrow="Overview"
-        title={`Good ${greeting()}, ${user?.name?.split(' ')[0] || 'there'}`}
-        description="Open cases, evidence in the pipeline, and where the network stands today."
+        eyebrow={t('overview', 'Overview')}
+        title={`${getGreeting()}, ${user?.name?.split(' ')[0] || (lang === 'hi' ? 'अधिकारी महोदय' : 'Officer')}`}
+        description={t('dashboardSubtitle', 'Open cases, evidence in the pipeline, and where the network stands today.')}
       />
 
       <div className="mx-auto max-w-[1200px] p-6 space-y-6">
-        {isLoading && <Spinner label="Loading dashboard" />}
+        {isLoading && <Spinner label={t('processing', 'Loading dashboard')} />}
         {error && <ErrorState error={error} onRetry={refetch} />}
 
         {data && (
@@ -34,17 +43,17 @@ export function Dashboard() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <Stat
                 icon={FolderOpen}
-                label="Cases"
+                label={t('totalCases', 'Cases')}
                 value={data.totalCases}
-                hint={`${data.byStatus?.active || 0} active`}
+                hint={`${data.byStatus?.active || 0} ${t('active', 'active')}`}
               />
-              <Stat icon={FileStack} label="Evidence items" value={data.totalEvidence} hint="across all cases" />
-              <Stat icon={Users} label="People on file" value={data.totalPersons} hint="linked to a case" />
+              <Stat icon={FileStack} label={t('evidenceItems', 'Evidence items')} value={data.totalEvidence} hint={t('acrossAllCases', 'across all cases')} />
+              <Stat icon={Users} label={t('peopleOnFile', 'People on file')} value={data.totalPersons} hint={t('linkedToCase', 'linked to a case')} />
               <Stat
                 icon={Loader2}
-                label="Processing"
+                label={t('processing', 'Processing')}
                 value={data.pendingProcessing}
-                hint={data.pendingProcessing ? 'documents in the pipeline' : 'pipeline idle'}
+                hint={data.pendingProcessing ? t('docsInPipeline', 'documents in the pipeline') : t('pipelineIdle', 'pipeline idle')}
                 spin={data.pendingProcessing > 0}
               />
             </div>
@@ -52,12 +61,12 @@ export function Dashboard() {
             <div className="grid gap-5 lg:grid-cols-3">
               <Card className="lg:col-span-2">
                 <CardHeader
-                  title="Recent cases"
-                  description="Most recently updated first"
+                  title={t('recentCases', 'Recent cases')}
+                  description={t('mostRecentlyUpdated', 'Most recently updated first')}
                   actions={
                     data.pendingProcessing > 0 ? (
                       <StatusPill tone="warning" pulse>
-                        {data.pendingProcessing} processing
+                        {data.pendingProcessing} {t('processing', 'processing')}
                       </StatusPill>
                     ) : null
                   }
@@ -65,7 +74,7 @@ export function Dashboard() {
                 {data.recentCases.length === 0 ? (
                   <EmptyState
                     icon={FolderOpen}
-                    title="No cases yet"
+                    title={t('noCasesYet', 'No cases yet')}
                     description="Run the seed script or create a case to get started."
                   />
                 ) : (
@@ -96,10 +105,10 @@ export function Dashboard() {
               </Card>
 
               <Card>
-                <CardHeader title="Caseload" description="By status and priority" />
+                <CardHeader title={t('caseload', 'Caseload')} description={t('byStatusAndPriority', 'By status and priority')} />
                 <div className="p-5 space-y-6">
-                  <Breakdown title="Status" data={data.byStatus} total={data.totalCases} />
-                  <Breakdown title="Priority" data={data.byPriority} total={data.totalCases} />
+                  <Breakdown title={t('status', 'Status')} data={data.byStatus} total={data.totalCases} />
+                  <Breakdown title={t('priority', 'Priority')} data={data.byPriority} total={data.totalCases} />
                 </div>
               </Card>
             </div>
@@ -141,8 +150,3 @@ function Breakdown({ title, data, total }) {
   );
 }
 
-function greeting() {
-  const hour = new Date().getHours();
-  if (hour < 12) return 'morning';
-  return hour < 18 ? 'afternoon' : 'evening';
-}

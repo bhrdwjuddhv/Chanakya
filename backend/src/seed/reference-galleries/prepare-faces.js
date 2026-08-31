@@ -23,14 +23,14 @@ const PROBES = path.join(HERE, 'faces/probes');
 
 // Which seeded people get an enrolled face. Order matches synth-1..8.
 export const FACE_IDENTITIES = [
-  'Marcus Vale',
-  'Dmitri Sokolov',
-  'Elena Rask',
-  'Tommy Nguyen',
-  'Iris Delacroix',
-  'Victor Lindqvist',
-  'Nadia Brandt',
-  'Jonas Kerr',
+  'Vikramaditya Singhania',
+  'Devendra Shukla',
+  'Esha Ray',
+  'Tanmay Nambiar',
+  'Isha Deshmukh',
+  'Varun Lodha',
+  'Neeta Bakshi',
+  'Jayant Kumar',
 ];
 
 export const slugify = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-');

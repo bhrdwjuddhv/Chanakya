@@ -121,7 +121,7 @@
   --color-warning: var(--warning);
   --color-graph-canvas: var(--graph-canvas);
 
-  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Instrument Sans', 'Mukta', 'Noto Sans Devanagari', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Controls are 5px, cards 12px — the two signature corners. */

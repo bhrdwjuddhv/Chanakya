@@ -1,127 +1,131 @@
 {
-  "_notice": "FICTIONAL PROTOTYPE DATA. Every record below is invented for demonstration and models the shape of a public company/registry disclosure. No real person, company or address is represented.",
+  "_notice": "FICTIONAL PROTOTYPE DATA — INDIAN REGISTRY & MCA CONTEXT. Every record below is invented for demonstration and models the shape of a public MCA-21, DIN, or property registry disclosure. No real person, company or address is represented.",
   "records": [
     {
       "id": "reg-0001",
       "kind": "company-officer",
-      "name": "Iris Delacroix",
-      "aliases": ["I. Delacroix"],
-      "email": "accounts@ledgerglass.example",
-      "phone": "+1-415-555-0288",
-      "company": "Ledger Glass Consulting",
-      "role": "Company secretary and sole officer",
+      "name": "Isha Deshmukh",
+      "aliases": ["I. Deshmukh"],
+      "email": "accounts@kanchconsultancy.in",
+      "phone": "+91-98100-55288",
+      "company": "Kanch Consultancy Services LLP",
+      "role": "Designated Partner (DIN 09283141)",
       "incorporated": "2024-11-02",
-      "address": "Suite 400, 91 Chandler Street",
-      "filing": "Companies registry extract CR-88214"
+      "address": "Suite 400, 91 Barakhamba Road, Connaught Place, New Delhi",
+      "filing": "MCA-21 LLP Master Data Record LLPIN-AAD-4912"
     },
     {
       "id": "reg-0002",
       "kind": "company-officer",
-      "name": "Iris Delacroix",
-      "company": "Pelham Nominees Ltd",
+      "name": "Isha Deshmukh",
+      "company": "Pelham Capital Advisors Pvt Ltd",
       "role": "Director",
       "incorporated": "2023-06-14",
-      "address": "12 Rookwood Terrace",
-      "filing": "Companies registry extract CR-71903",
-      "note": "Second directorship not previously linked to this individual."
+      "address": "12 Nehru Place, New Delhi",
+      "filing": "MCA-21 Company Master Data CIN-U74140DL2023PTC391024",
+      "note": "Second directorship not previously linked in police case records."
     },
     {
       "id": "reg-0003",
       "kind": "company-officer",
-      "name": "Victor Lindqvist",
-      "email": "v.lindqvist@lindqvistbuild.example",
-      "company": "Lindqvist Build Group",
-      "role": "Principal",
+      "name": "Varun Lodha",
+      "email": "v.lodha@lodhainfracon.in",
+      "company": "Lodha Infracon Pvt Ltd",
+      "role": "Managing Director (DIN 01429810)",
       "incorporated": "2016-03-22",
-      "address": "17 Foundry Road",
-      "filing": "Companies registry extract CR-40117"
+      "address": "17 Okhla Phase III, Industrial Area, New Delhi",
+      "filing": "MCA-21 Company Master Data CIN-U45200DL2016PTC291880"
     },
     {
       "id": "reg-0004",
       "kind": "company-officer",
-      "name": "Selim Okonkwo",
-      "email": "s.okonkwo@okonkwoadvisory.example",
-      "company": "Okonkwo Advisory",
-      "role": "Principal",
+      "name": "Sanjay Oswal",
+      "email": "s.oswal@oswaladvisory.in",
+      "company": "Oswal Infrastructure Advisors LLP",
+      "role": "Managing Partner (DIN 03819201)",
       "incorporated": "2019-09-05",
-      "filing": "Companies registry extract CR-55620"
+      "filing": "MCA-21 LLP Master Data LLPIN-AAM-8812"
     },
     {
       "id": "reg-0005",
       "kind": "company-officer",
-      "name": "Marcus Vale",
-      "aliases": ["The Harbourmaster"],
-      "company": "Vale Freight Holdings",
-      "role": "Sole director",
+      "name": "Vikramaditya Singhania",
+      "aliases": ["Bada Seth", "The Harbourmaster"],
+      "company": "Singhania Multi-Modal Logistics",
+      "role": "Managing Director (DIN 08412930)",
       "incorporated": "2018-01-30",
-      "filing": "Companies registry extract CR-33288",
-      "note": "Shares a registered agent with Northside Auto Salvage."
+      "filing": "MCA-21 Company Master Data CIN-U63090MH2018PTC304192",
+      "note": "Shares a registered secretarial address with Kalamboli Scrap & Logistics Hub."
     },
     {
       "id": "reg-0006",
       "kind": "company-officer",
-      "name": "Katya Sorenson",
-      "company": "Vale Freight Holdings",
-      "role": "Company secretary",
+      "name": "Kavita Shinde",
+      "company": "Singhania Multi-Modal Logistics",
+      "role": "Company Secretary & Compliance Officer",
       "appointed": "2024-07-11",
-      "filing": "Companies registry extract CR-33288/A",
-      "note": "Officer appointment not present in current case records."
+      "filing": "MCA-21 Form DIR-12 Filing Ref 8831/MUM",
+      "note": "Secretarial appointment not recorded in basic police dossiers."
     },
     {
       "id": "reg-0007",
       "kind": "professional-listing",
-      "name": "Jonas Kerr",
-      "email": "j.kerr@riverfront-bio.example",
-      "company": "Riverfront Bioscience Institute",
-      "role": "Principal researcher, composite materials",
-      "filing": "Institute public staff directory"
+      "name": "Jayant Kumar",
+      "email": "j.kumar@yamunabio.ac.in",
+      "company": "Yamuna Advanced Bio-Materials Institute",
+      "role": "Principal Researcher, Composite Polymers",
+      "filing": "National Institutional Faculty Registry / DST Directory"
     },
     {
       "id": "reg-0008",
       "kind": "professional-listing",
-      "name": "Alina Petrova",
-      "email": "a.petrova@riverfront-bio.example",
-      "company": "Riverfront Bioscience Institute",
-      "role": "Senior researcher, composite materials",
-      "filing": "Institute public staff directory"
+      "name": "Dr. Ananya Sen",
+      "email": "a.sen@yamunabio.ac.in",
+      "company": "Yamuna Advanced Bio-Materials Institute",
+      "role": "Chief Scientist & Division Lead",
+      "filing": "National Institutional Faculty Registry / DST Directory"
     },
     {
       "id": "reg-0009",
       "kind": "company-officer",
-      "name": "Daniel Rehm",
-      "company": "Ledger Glass Consulting",
-      "role": "Second account signatory",
+      "name": "Dharmendra Rawat",
+      "company": "Kanch Consultancy Services LLP",
+      "role": "Authorized Bank Signatory",
       "appointed": "2025-02-03",
-      "filing": "Banking disclosure FIR-2025-118",
-      "note": "Does not appear on the incorporation filing."
+      "filing": "Banking Mandate Form HDFC-2025-118",
+      "note": "Added as second signatory to operational account."
     },
     {
       "id": "reg-0010",
       "kind": "property-record",
-      "name": "Elena Rask",
-      "company": "Rask Antiques",
-      "role": "Registered proprietor",
-      "address": "22 Camden Row",
-      "filing": "Commercial property register CP-9921"
+      "name": "Vikramaditya Singhania",
+      "address": "Bungalow 4, Worli Sea Face, Mumbai",
+      "role": "Freehold Owner",
+      "filing": "Maharashtra Land Revenue & Property Registry PR-MUM-8812"
     },
     {
       "id": "reg-0011",
-      "kind": "company-officer",
-      "name": "Harold Meade",
-      "company": "Civic Futures Trust",
-      "role": "Board member",
-      "appointed": "2023-04-18",
-      "filing": "Charity commission filing CH-2210",
-      "note": "Board minutes list I. Delacroix as a fellow member."
+      "kind": "property-record",
+      "name": "Harish Chandra Mehra",
+      "address": "14 Sunder Nagar, New Delhi",
+      "role": "Title Holder",
+      "filing": "Delhi Land & Development Office Record DL-SN-04"
     },
     {
       "id": "reg-0012",
-      "kind": "company-officer",
-      "name": "Iris Delacroix",
-      "company": "Civic Futures Trust",
-      "role": "Board member",
-      "appointed": "2023-04-18",
-      "filing": "Charity commission filing CH-2210"
+      "kind": "vehicle-record",
+      "name": "Vikramaditya Singhania",
+      "vehicle": "Black SUV MH-01-DE-8823",
+      "registered": "2023-04-18",
+      "filing": "Vahan National Register MH01-2023-8823"
+    },
+    {
+      "id": "reg-0013",
+      "kind": "vehicle-record",
+      "name": "Jayant Kumar",
+      "vehicle": "Grey Sedan UP-16-AB-2290",
+      "registered": "2021-11-09",
+      "filing": "Vahan National Register UP16-2021-2290"
     }
   ]
 }

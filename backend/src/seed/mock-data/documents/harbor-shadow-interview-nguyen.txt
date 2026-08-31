@@ -1,67 +1,62 @@
-FICTIONAL PROTOTYPE DATA — created for a software demonstration. All names, companies,
-addresses, vehicles and phone numbers below are invented.
+FICTIONAL PROTOTYPE DATA — INDIAN LAW ENFORCEMENT & CRIME RECORDS CONTEXT (NCRB/MHA).
+All names, companies, addresses, vehicles and phone numbers below are invented.
 
-OPERATION HARBOR SHADOW
-RECORD OF INTERVIEW — T. NGUYEN
-Reference: IV-19
-Date: 2 April 2025, 10:00
-Present: Det. D. Whitlock; T. Nguyen; legal representative
+OPERATION SAGAR CHHAYA
+RECORD OF STATEMENT UNDER SECTION 161 CrPC / CASE DIARY
+Reference: CD-19
+Date: 2 April 2025, 10:00 AM
+Investigating Officer: Insp. Vikramaditya, Crime Branch CID
+Person Examined: Tanmay Nambiar (28), S/o K. Nambiar
 Classification: RESTRICTED
 
-Q: You work night shift at the Pier 14 warehouse for Harbor Logistics.
+Q: State your designation and working hours at Nhava Sheva Freight & CFS Ltd.
 
-A: Since 2022. Ten till six, four nights a week.
+A: I have been working as night-shift clearance clerk at JNPT CFS Yard 4 since August 2022.
+My shift runs from 10:00 PM to 06:00 AM, four nights a week.
 
-Q: Do you know a man called Dmitri Sokolov?
+Q: Do you know an individual named Devendra Shukla, also known as "Deva"?
 
-A: I've met him twice. Once in the car park outside the yard, once at a bar on Camden
-Row. He said he did contract work for one of the freight companies.
+A: Yes, Sir. I met him twice. First time near the Seawoods railway station tea stall, and
+second time at a dhaba on Uran Road. He introduced himself as a logistics contractor for
+Singhania Logistics.
 
-Q: Which company?
+Q: Did he mention Vikramaditya Singhania or Singhania Multi-Modal?
 
-A: He didn't say. He mentioned a name once — Vale, I think. Vale Freight. I didn't
-follow it up.
+A: He mentioned Singhania Multi-Modal. He said his boss handles major container movements
+across Mumbai and Gujarat.
 
-Q: What did he want?
+Q: What information did he request from you?
 
-A: The first time, nothing. He asked what hours the bay ran and whether the rear gate
-had a camera. I said everything's on camera. The second time he asked if I ever worked
-the manifest side. I told him that's Priya's job, not mine.
+A: The first time, he asked casually about the yard clearance timings and whether the out-gate
+RFID scanner had manual override. I told him every gate is monitored by CISF and Customs.
+The second time he asked if I prepare the out-gate manifests. I clarified that manifest
+reconciliation is handled strictly by Superintendent Priya Chandra madam.
 
-Q: Priya Chandra?
+Q: Did you assist him or share gate credentials?
 
-A: Yes. She's the coordinator. She does the manifests and the gate logs.
+A: No, Sir. I only mentioned the shift timings, which are publicly displayed at the port gate.
 
-Q: Did you give Sokolov any information about the warehouse?
+Q: Have you ever met Vikramaditya Singhania personally?
 
-A: I told him the bay hours. That's on the sign at the gate, anyone can read it.
+A: Never met him in person. But on the port docks everyone knows him as "Bada Seth".
 
-Q: Have you ever met Marcus Vale?
+Q: Are you familiar with the white container truck MH-06-BW-4417?
 
-A: No. I've heard the name. People at the yard call him the Harbourmaster. I've never
-seen him.
+A: Yes, it is a regular carrier. Raghav Ojha drives that truck frequently.
 
-Q: Are you familiar with a white box truck, plate WGT-4417?
+Q: Were you on duty on the night of 3 February when the seal breach took place?
 
-A: It comes through. It's a regular. Ray drives it sometimes.
+A: Yes, I was on duty in the cabin. The rear container bays are obstructed by stack containers
+and not visible from my desk.
 
-Q: Ray Okafor?
+Q: What is your primary mobile number?
 
-A: Yes, contract driver. He's got keys to half the fleet.
+A: +91-98201-55197. It is registered on my Aadhaar.
 
-Q: On the night of 3 February, were you on shift?
+INVESTIGATING OFFICER'S NOTE
 
-A: I was. I didn't see anything unusual. The rear bay is out of sight from the office.
-
-Q: Do you use any phone other than +1-415-555-0197?
-
-A: No. That's my only number.
-
-INTERVIEWING OFFICER'S NOTE
-
-Nguyen's account is internally consistent and he volunteered the connection between
-Sokolov and Vale Freight without prompting. His stated ignorance of the thefts is not
-contradicted by any evidence currently held. He remains a person of interest on the
-basis of shift overlap rather than any positive indication of involvement.
+The statement of Tanmay Nambiar is consistent with our gate logs. He volunteered the link
+between Devendra Shukla and Singhania Multi-Modal without hesitation. While no direct bribery
+receipt is proven yet, he remains a person of interest due to continuous shift overlaps.
 
 END OF RECORD

@@ -205,21 +205,17 @@ Three stores, each doing what it is good at:
 
 ## The seeded cases
 
-Three fictional cases, shaped so the analysis has something real to find:
+Three fictional cases in an Indian law enforcement and intelligence context (NCRB / MHA / State Police):
 
-- **Operation Harbor Shadow** — warehouse theft ring. Marcus Vale never touches the cargo but
-  every route passes through him; his betweenness is 64.5, the highest in the case.
-- **Riverfront Disappearance** — missing researcher. Shares Marcus Vale and Vale Freight
-  Holdings with Harbor Shadow, so the cross-case bridge rule fires on real data.
-- **Project Ledger Glass** — procurement fraud. Three vendors that never contact each other
-  all pay Ledger Glass Consulting. Iris Delacroix, its sole officer, is not a named suspect
-  but is the only path between the procurement cluster and the contractor cluster.
+- **Operation Sagar Chhaya** — JNPT bonded container cargo theft ring. Vikramaditya Singhania ("Bada Seth") never touches the cargo but every transport route passes through him; his betweenness centrality is the highest in the case.
+- **Yamuna Expressway Abduction & Tech Theft** — missing DRDO-aligned composite scientist Dr. Ananya Sen. Shares Vikramaditya Singhania and Singhania Multi-Modal Logistics with Sagar Chhaya, so the cross-case bridge rule fires on real data.
+- **Operation Kaagazi Company** — municipal procurement fraud (DMDA). Unrelated contractors all pay kickbacks into Kanch Consultancy Services LLP. Isha Deshmukh, its sole designated partner, is not a named suspect in initial complaints but is the only path between the government procurement cluster and the private contractor cluster.
 
 Verified output from the seeded graph:
 
 ```
-Harold Meade → Iris Delacroix → Victor Lindqvist          (2 hops)
-Grace Tan → Nadia Brandt → Iris Delacroix → Selim Okonkwo  (3 hops)
+Harish Chandra Mehra → Isha Deshmukh → Varun Lodha          (2 hops)
+Gita Trivedi → Neeta Bakshi → Isha Deshmukh → Sanjay Oswal   (3 hops)
 ```
 
 `backend/src/seed/mock-data/documents/for-live-upload/` holds documents that are **not**

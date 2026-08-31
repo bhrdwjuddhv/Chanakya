@@ -1,76 +1,68 @@
-FICTIONAL PROTOTYPE DATA — created for a software demonstration. All names, companies,
-addresses and phone numbers below are invented.
+FICTIONAL PROTOTYPE DATA — INDIAN LAW ENFORCEMENT & VIGILANCE CONTEXT (NCRB/CVC/MHA).
+All names, companies, addresses and phone numbers below are invented.
 
-PROJECT LEDGER GLASS
-INTERNAL AUDIT MEMORANDUM
-Reference: IA-33
+OPERATION KAAGAZI COMPANY
+DIRECTORATE OF VIGILANCE — SPECIAL AUDIT MEMORANDUM
+Reference: VIG-DMDA-2025-33
 Date: 6 May 2025
-Author: Grace Tan, Internal Audit, Meridian Civic Contracts
+Author: Gita Trivedi, Senior Vigilance Officer / Audit Team Lead
+Authority: Delhi Municipal Development Authority (DMDA)
 Classification: CONFIDENTIAL
 
 1. PURPOSE
 
-This memorandum records a payment pattern identified during routine review of three
-infrastructure tenders awarded between January and June 2025, with a combined value of
-$18.6M.
+This vigilance memorandum records irregular procurement and money-routing patterns uncovered
+during statutory audit of three municipal civil infrastructure contracts awarded between
+January and June 2025, having an aggregate value of ₹142.5 Crore.
 
-2. THE AWARDS
+2. THE TENDER AWARDS
 
-Tender 1 (PC-2025-01), $7.2M, awarded 28 January to Lindqvist Build Group. Two of three
-competing bids were withdrawn in the final week before submission.
+Tender 1 (PC-2025-01): ₹58 Crore (Flyover and Grade Separator Repair), awarded on 28 January to
+Lodha Infracon Pvt Ltd. Two public sector competing bids were rejected during pre-qualification.
 
-Tender 2 (PC-2025-04), $5.9M, awarded 19 March to Okonkwo Advisory. The scoring sheet
-records a late adjustment to the technical weighting, applied after bids had been opened.
+Tender 2 (PC-2025-04): ₹47.5 Crore (Smart Urban Corridor Sensor Network), awarded on 19 March to
+Oswal Infrastructure Advisors LLP. Technical criteria weightage was altered post technical bid opening.
 
-Tender 3 (PC-2025-09), $5.5M, awarded 20 June. The evaluation committee was chaired by
-Councillor Harold Meade. Nadia Brandt signed off all three awards in her capacity as
-senior procurement officer.
+Tender 3 (PC-2025-09): ₹37 Crore (Comprehensive Drainage & Stormwater Overhaul), awarded on 20 June.
+The Tender Evaluation Board was presided over by Standing Committee Chairman Harish Chandra Mehra.
+Chief Engineer Neeta Bakshi signed the final sanction notes for all three contracts.
 
-3. THE PATTERN
+3. UNCOVERED CIRCULAR FINANCIAL ROUTING
 
-Lindqvist Build Group and Okonkwo Advisory have no shared directors, no shared premises
-and no recorded commercial relationship with each other. Victor Lindqvist and Selim
-Okonkwo have both attended the same three pre-tender briefings, but nothing further
-connects the two firms.
+Lodha Infracon Pvt Ltd and Oswal Infrastructure Advisors LLP have no declared common directors,
+no shared corporate addresses, and no recorded joint ventures. Managing Director Varun Lodha and
+Sanjay Oswal attended the same pre-bid conference at Taj Palace, Chanakyapuri, but maintain
+distinct market profiles.
 
-Both firms, however, make payments to the same entity: Ledger Glass Consulting.
+However, forensic bank statement analysis reveals both entities transfer heavy funds to a common
+shell company: Kanch Consultancy Services LLP.
 
-Lindqvist Build Group has issued eleven payments to Ledger Glass Consulting totalling
-$410,000, described as "advisory services". No scope of work, deliverable or timesheet
-is attached to any of them. Okonkwo Advisory has issued six payments totalling $265,000,
-using wording identical to the Lindqvist invoices. A single further payment appears to
-have been routed to Ledger Glass Consulting through a subcontractor line item on a
-Meridian Civic Contracts schedule; this one is less clear and should be confirmed before
-it is relied upon.
+Lodha Infracon has executed 11 RTGS payments totalling ₹4.10 Crore to Kanch Consultancy Services LLP
+for "Technical Feasibility Analysis". No project charter, DPR, structural calculation sheet, or site
+inspection note is attached to any invoice.
+Oswal Infrastructure Advisors LLP has made 6 bank transfers totalling ₹2.65 Crore using identical
+invoice descriptions. Furthermore, an unapproved municipal payment of ₹68 Lakhs was routed to Kanch
+LLP under a minor sub-contractor head.
 
-All invoices are directed to a single mailbox, accounts@ledgerglass.example, and carry
-the contact number +1-415-555-0288.
+All bank confirmations and communications are handled via accounts@kanchconsultancy.in and mobile
+number +91-98100-55288.
 
-4. THE COUNTERPARTY
+4. THE INTERMEDIARY SHELL ENTITY
 
-Ledger Glass Consulting was incorporated on 2 November 2024. Its sole named officer is
-Iris Delacroix. Its registered address, Suite 400, 91 Chandler Street, is a
-mail-forwarding suite; a site visit on 30 April found no office and no staff. The
-company has no employees on record. The number +1-415-555-0288 appears both on the
-Ledger Glass filings and on invoices issued by two of the vendors.
+Kanch Consultancy Services LLP was incorporated on 2 November 2024 (LLPIN: AAD-4912).
+Its sole Designated Partner is Isha Deshmukh (DIN 09283141). Its registered office at Suite 400,
+91 Barakhamba Road, Connaught Place, New Delhi is a virtual address provider. A physical verification
+conducted by Vigilance on 30 April confirmed no office, no staff, and zero operational infrastructure.
 
-Ms Delacroix is not named in any complaint and holds no role at Meridian Civic
-Contracts. She is recorded on the same charity board minutes as Councillor Meade in
-2023, and appears as the host of a private dinner booking on 11 January at which Victor
-Lindqvist was a listed guest — seventeen days before Tender 1 was awarded.
+Isha Deshmukh is not named in any formal contractor bid and holds no official position in DMDA.
+However, she is a co-trustee alongside Chairman Harish Chandra Mehra in Jan Seva Educational Trust.
+Furthermore, banquet booking records show she hosted a private dinner on 11 January at Delhi Golf Club
+where contractor Varun Lodha was in attendance — 17 days before Tender 1 was awarded.
 
-5. OBSERVATION
+5. FINDINGS
 
-The three vendors do not appear connected to each other. They are connected to the same
-intermediary. On the evidence available, Ledger Glass Consulting is the only point at
-which the vendor side and the procurement side of these transactions meet.
+The contractors do not connect directly to each other; they route kickbacks through Kanch Consultancy
+Services LLP. On the evidence available, Isha Deshmukh's shell entity represents the single structural
+bridge between government decision-makers and winning private contractors.
 
-6. RECOMMENDATION
-
-Refer to external investigation. This memorandum does not conclude that any payment was
-improper; it records that the pattern cannot be explained by the documentation held.
-
-G. Tan
-Internal Audit
-
-END OF MEMORANDUM
+END OF VIGILANCE MEMO

@@ -156,7 +156,7 @@ function buildStyle() {
         height: 'data(size)',
         label: 'data(label)',
         'font-size': 11,
-        'font-family': "'Instrument Sans', system-ui, sans-serif",
+        'font-family': "'Mukta', 'Noto Sans Devanagari', 'Instrument Sans', system-ui, sans-serif",
         'font-weight': 500,
         color: fg,
         'text-valign': 'bottom',

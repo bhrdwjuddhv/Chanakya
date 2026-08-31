@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import { get } from '../../lib/api';
 import { Card, EmptyState, ErrorState, Spinner } from '../ui';
 import { token } from '../../lib/utils';
+import { useI18n } from '../../lib/i18n';
 
 // Leaflet's default marker icons resolve to broken URLs under a bundler, so draw our own.
 // A crime scene is the one map marker that earns the accent red.
@@ -31,6 +32,7 @@ const markerIcon = (type) =>
   });
 
 export function MapTab({ caseId }) {
+  const { t, lang } = useI18n();
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['locations', caseId],
     queryFn: () => get(`/locations/case/${caseId}`),
@@ -38,14 +40,14 @@ export function MapTab({ caseId }) {
 
   const locations = data?.locations || [];
   const centre = useMemo(() => {
-    if (!locations.length) return [40.72, -74.0];
+    if (!locations.length) return [19.076, 72.8777]; // Default Mumbai coords
     return [
       locations.reduce((sum, l) => sum + l.lat, 0) / locations.length,
       locations.reduce((sum, l) => sum + l.lng, 0) / locations.length,
     ];
   }, [locations]);
 
-  if (isLoading) return <Spinner label="Loading locations" />;
+  if (isLoading) return <Spinner label={lang === 'hi' ? 'भौगोलिक स्थान लोड हो रहे हैं...' : 'Loading locations'} />;
   if (error) return <ErrorState error={error} onRetry={refetch} />;
   if (!locations.length) {
     return (
@@ -53,8 +55,8 @@ export function MapTab({ caseId }) {
         <Card>
           <EmptyState
             icon={MapPin}
-            title="No mapped locations on this case"
-            description="Locations extracted from evidence or added manually appear here."
+            title={lang === 'hi' ? 'इस केस में कोई मैप लोकेशन दर्ज नहीं है' : 'No mapped locations on this case'}
+            description={lang === 'hi' ? 'साक्ष्यों अथवा केस डायरी से निष्कर्षित भौगोलिक स्थान यहाँ मानचित्र पर प्रदर्शित होते हैं।' : 'Locations extracted from evidence or added manually appear here.'}
           />
         </Card>
       </div>

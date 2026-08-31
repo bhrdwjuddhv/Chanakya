@@ -1,73 +1,59 @@
-FICTIONAL PROTOTYPE DATA — created for a software demonstration. All names, companies,
-addresses, vehicles and phone numbers below are invented.
+FICTIONAL PROTOTYPE DATA — INDIAN LAW ENFORCEMENT & CRIME RECORDS CONTEXT (NCRB/MHA).
+All names, companies, addresses, vehicles and phone numbers below are invented.
 
-OPERATION HARBOR SHADOW
-SURVEILLANCE LOG — CONSOLIDATED SUMMARY
-Reference: HS-SURV-004
-Prepared by: Det. D. Whitlock
+OPERATION SAGAR CHHAYA
+SURVEILLANCE LOG — CONSOLIDATED CASE DIARY SUMMARY
+Reference: CD-MUM-SURV-004
+Prepared by: Insp. Vikramaditya, Crime Branch CID / Special Operations
 Classification: RESTRICTED
 
 1. SCOPE
 
-This log consolidates static and mobile surveillance conducted between 14 January and
-19 May 2025 in connection with seven cargo thefts from the bonded warehouse at Pier 14,
-operated by Harbor Logistics Ltd.
+This surveillance log consolidates static and electronic surveillance conducted between
+14 January and 19 May 2025 in connection with seven high-value container cargo diversions
+from the bonded CFS Yard 4 at JNPT Port, Nhava Sheva, operated by Nhava Sheva Freight & CFS Ltd.
 
 2. SUBJECTS
 
-Marcus Vale (47), sole director of Vale Freight Holdings. Known locally as "the
-Harbourmaster". Vale was never observed handling cargo directly. On every night of
-interest he was observed either at the Northside Salvage Yard on Northside Avenue or in
-the black Audi sedan, plate KDP-8823, within two kilometres of it.
+Vikramaditya Singhania (47), Managing Director of Singhania Multi-Modal Logistics (Nariman Point).
+Known on street wiretaps as "Bada Seth". Singhania was never observed handling physical cargo
+or container seals. On every incident night, he was tracked at Kalamboli Steel & Scrap Yard
+or travelling within two kilometres in his black Toyota Fortuner, registration MH-01-DE-8823.
 
-Dmitri Sokolov (39). Observed entering the Pier 14 rear loading bay on four occasions
-outside scheduled operating hours. On 3 February at 02:15 the white Isuzu box truck,
-plate WGT-4417, was recorded departing the rear bay. The same plate was captured by
-automatic number plate recognition arriving at the Northside Salvage Yard at 03:05 the
-same morning.
+Devendra Shukla (39), alias "Deva". Observed entering the JNPT CFS Yard 4 rear gate on four
+occasions outside scheduled customs hours. On 3 February at 02:15 AM, the white Tata Prima
+container truck, plate MH-06-BW-4417, was recorded departing the rear bay without manifest clearance.
+The same plate was logged by Fastag sensors arriving at the Kalamboli Scrap Yard at 03:05 AM.
 
-Elena Rask (52), proprietor of Rask Antiques, 22 Camden Row. Rask has no recorded
-contact with Sokolov. Two intercepted messages sent from the prepaid handset
-+1-415-555-0142 refer to "handing the load to E." The identification of "E" as Rask is
-an inference and has not been corroborated.
+Esha Ray (52), proprietor of Ray Antiques & Curios, 22 Kala Ghoda, Fort, Mumbai. Ray has no recorded
+direct communication with Shukla. Two intercepted messages sent from prepaid mobile +91-98201-55142
+refer to "handing the high-value consignment to ER Fort gallery". The identification of "ER" as Esha Ray
+is an intelligence inference awaiting corroboration.
 
-Tommy Nguyen (28), night-shift clerk at Harbor Logistics Ltd since 2022. Nguyen was on
-shift for six of the seven incidents. In interview on 2 April he admitted to two
-meetings with Sokolov but denied knowledge of the thefts. Nguyen's handset,
-+1-415-555-0197, is registered in his own name and was not used to contact any burner
-number in the reviewed period.
+Tanmay Nambiar (28), night-shift customs clearance clerk at Nhava Sheva Freight since 2022. Nambiar was
+on roster for six of the seven diversion incidents. In inquiry on 2 April he admitted to two secret meetings
+with Devendra Shukla at a Seawoods dhaba, but denied knowledge of container tampering. Nambiar's official
+mobile, +91-98201-55197, is registered in his own Aadhaar name.
 
-Ray Okafor (34), contract driver. Okafor's delivery schedule places him at the Northside
-Salvage Yard on three of the seven incident nights. He has held the keys to WGT-4417 on
-at least one occasion, though it is not established that he drove it on 3 February.
+Raghav Ojha (34), contract heavy vehicle driver. Ojha's GPS trip sheets place him at the Kalamboli Scrap
+Yard on three incident nights. He holds gate passes for MH-06-BW-4417, though it is not verified if he
+was at the wheel on 3 February.
 
-3. HANDSET ACTIVITY
+3. CELL TOWER ANALYSIS
 
-The prepaid handset +1-415-555-0142 first appears on the network on 11 March at 19:20,
-near the Northside Salvage Yard. It is active only on nights of interest and is powered
-off for the remainder of the period. Tower data for this handset mirrors Vale's known
-movements on six of the seven nights. This correlation is strong but circumstantial;
-the handset is not registered to Vale.
+The prepaid SIM +91-98201-55142 first activated on 11 March at 19:20 near Kalamboli Industrial Area.
+It activates strictly during midnight container movements and is switched off during daytime hours.
+Tower triangulation mirrors Singhania's movements across 6 of the 7 incident nights.
 
-4. CORPORATE
+4. CORPORATE TIES
 
-Vale Freight Holdings and Northside Auto Salvage share a registered agent and file at
-the same address. No common directorship has been established. Harbor Logistics Ltd is
-the registered operator of the Pier 14 warehouse and is not itself a subject of this
-operation.
+Singhania Multi-Modal Logistics and Kalamboli Scrap & Logistics Hub share the same registered chartered
+accountant and file under identical corporate addresses on MCA-21. Nhava Sheva Freight & CFS Ltd is the
+authorized custodian of the JNPT yard and not an accused entity.
 
-5. WITNESS
+5. WITNESSES
 
-Priya Chandra (41), logistics coordinator at Harbor Logistics Ltd, reported on 19 May
-that six months of gate logs failed to reconcile with outbound manifests. Chandra works
-overlapping shifts with Nguyen and knows him professionally. Her statement is recorded
-at WS-07.
+Priya Chandra (41), Customs Superintendent at JNPT. Reported the unmanifested container seal breakages
+and initiated the internal customs audit.
 
-6. ASSESSMENT
-
-The pattern is consistent with an organised crew operating with inside assistance. Vale
-is assessed as the coordinating figure on the basis of position rather than direct
-action: he is never present at the point of theft, but every route and every associate
-passes through him.
-
-END OF LOG
+END OF CASE DIARY SUMMARY

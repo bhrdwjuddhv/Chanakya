@@ -3,8 +3,10 @@ import { Crosshair, ExternalLink, GitBranch, Route, X } from 'lucide-react';
 import { get } from '../../lib/api';
 import { Badge, Button, ErrorState, Spinner } from '../ui';
 import { ENTITY_COLOURS, STATUS_STYLES } from '../../lib/utils';
+import { useI18n } from '../../lib/i18n';
 
 export function NodeInspector({ nodeKey, onClose, onExpand, onFocus, onPathFrom, pathAnchor }) {
+  const { t, lang } = useI18n();
   const { data, isLoading, error } = useQuery({
     queryKey: ['graph-node', nodeKey],
     queryFn: () => get(`/graph/node/${encodeURIComponent(nodeKey)}`),
@@ -13,12 +15,28 @@ export function NodeInspector({ nodeKey, onClose, onExpand, onFocus, onPathFrom,
 
   const node = data?.node;
 
+  const getEntityTypeName = (tp) => {
+    if (lang !== 'hi') return tp;
+    const map = {
+      Person: 'संदिग्ध व्यक्ति (Person)',
+      Phone: 'फ़ोन / सिम (Phone)',
+      Email: 'ईमेल पता (Email)',
+      Organization: 'कंपनी / सिंडिकेट (Org)',
+      Vehicle: 'वाहन (Vehicle)',
+      Location: 'स्थान (Location)',
+      Document: 'दस्तावेज़ (Doc)',
+      Evidence: 'साक्ष्य (Evidence)',
+      Event: 'कांड / घटना (Event)',
+    };
+    return map[tp] || tp;
+  };
+
   return (
     <aside className="w-80 shrink-0 border-l border-border bg-card flex flex-col overflow-hidden">
-      <PanelHeader title="Entity" onClose={onClose} />
+      <PanelHeader title={lang === 'hi' ? 'इकाई विवरण (Entity Inspector)' : 'Entity'} onClose={onClose} />
 
       <div className="flex-1 overflow-y-auto">
-        {isLoading && <Spinner label="Loading entity" />}
+        {isLoading && <Spinner label={lang === 'hi' ? 'इकाई विवरण लोड हो रहा है...' : 'Loading entity'} />}
         {error && <ErrorState error={error} />}
 
         {node && (
@@ -26,21 +44,23 @@ export function NodeInspector({ nodeKey, onClose, onExpand, onFocus, onPathFrom,
             <div className="px-5 py-4 border-b border-border">
               <div className="flex items-center gap-2">
                 <span className="size-2.5 rounded-full" style={{ background: ENTITY_COLOURS[node.type] }} />
-                <span className="label">{node.type}</span>
+                <span className="label">{getEntityTypeName(node.type)}</span>
               </div>
               <h4 className="text-[17px] mt-2 leading-snug">{node.name}</h4>
               {node.aliases?.length > 0 && (
-                <p className="text-[12px] text-muted-foreground mt-1.5">Also known as {node.aliases.join(', ')}</p>
+                <p className="text-[12px] text-muted-foreground mt-1.5">
+                  {lang === 'hi' ? 'उपनाम / उर्फ़:' : 'Also known as'} {node.aliases.join(', ')}
+                </p>
               )}
             </div>
 
             <div className="grid grid-cols-2 divide-x divide-border border-b border-border">
-              <Metric label="Relationships" value={node.relationshipCount} />
-              <Metric label="Cases" value={node.cases.length} />
+              <Metric label={lang === 'hi' ? 'संबंध (Links)' : 'Relationships'} value={node.relationshipCount} />
+              <Metric label={lang === 'hi' ? 'संबद्ध केस (Cases)' : 'Cases'} value={node.cases.length} />
             </div>
 
             {node.cases.length > 0 && (
-              <Section title="Appears in">
+              <Section title={lang === 'hi' ? 'इन मामलों में दर्ज' : 'Appears in'}>
                 <div className="space-y-1.5">
                   {node.cases.map((c) => (
                     <a
@@ -55,7 +75,9 @@ export function NodeInspector({ nodeKey, onClose, onExpand, onFocus, onPathFrom,
                 </div>
                 {node.cases.length > 1 && (
                   <p className="text-[11px] text-warning bg-warning/10 border border-warning/25 rounded-control px-2.5 py-2 mt-2.5 leading-snug">
-                    This entity links {node.cases.length} separate cases.
+                    {lang === 'hi'
+                      ? `यह इकाई ${node.cases.length} अलग-अलग केसों को आपस में जोड़ती है।`
+                      : `This entity links ${node.cases.length} separate cases.`}
                   </p>
                 )}
               </Section>
@@ -82,10 +104,10 @@ export function NodeInspector({ nodeKey, onClose, onExpand, onFocus, onPathFrom,
       {node && (
         <div className="border-t border-border p-3 space-y-1.5">
           <Button variant="secondary" size="sm" className="w-full" onClick={() => onExpand(node.key)}>
-            <GitBranch className="size-3.5" /> Expand relationships
+            <GitBranch className="size-3.5" /> {lang === 'hi' ? 'संबंधों का विस्तार करें (Expand)' : 'Expand relationships'}
           </Button>
           <Button variant="secondary" size="sm" className="w-full" onClick={() => onFocus(node.key)}>
-            <Crosshair className="size-3.5" /> Focus on this entity
+            <Crosshair className="size-3.5" /> {lang === 'hi' ? 'इस इकाई पर फ़ोकस करें' : 'Focus on this entity'}
           </Button>
           <Button
             variant={pathAnchor === node.key ? 'primary' : 'secondary'}
@@ -95,10 +117,16 @@ export function NodeInspector({ nodeKey, onClose, onExpand, onFocus, onPathFrom,
           >
             <Route className="size-3.5" />
             {pathAnchor && pathAnchor !== node.key
-              ? 'Find path from selected'
+              ? lang === 'hi'
+                ? 'चयनित से मार्ग खोजें'
+                : 'Find path from selected'
               : pathAnchor === node.key
-                ? 'Pick a second entity…'
-                : 'Find shortest path'}
+                ? lang === 'hi'
+                  ? 'दूसरी इकाई चुनें…'
+                  : 'Pick a second entity…'
+                : lang === 'hi'
+                  ? 'सबसे छोटा मार्ग खोजें (Shortest Path)'
+                  : 'Find shortest path'}
           </Button>
         </div>
       )}
@@ -141,61 +169,60 @@ function Section({ title, children }) {
 
 /** Shown when an edge is clicked, so a suggested link can be confirmed or rejected. */
 export function EdgeInspector({ edge, onClose, onReview, reviewing, canReview }) {
-  const style = STATUS_STYLES[edge.status] || STATUS_STYLES.UNVERIFIED;
+  const { t, lang } = useI18n();
+  const style = STATUS_STYLES[edge.status] || STATUS_STYLES.SUGGESTED;
+
+  const getStatusHindi = (st) => {
+    if (st === 'CONFIRMED') return 'अधिकारी द्वारा पुष्टीकृत (Confirmed)';
+    if (st === 'SUGGESTED') return 'एआई द्वारा प्रस्तावित (Suggested)';
+    if (st === 'INFERRED') return 'अनुमानित संबंध (Inferred)';
+    if (st === 'DISPUTED') return 'विवादित / खंडित (Disputed)';
+    return st;
+  };
 
   return (
-    <aside className="w-80 shrink-0 border-l border-border bg-card flex flex-col">
-      <PanelHeader title="Relationship" onClose={onClose} />
+    <aside className="w-80 shrink-0 border-l border-border bg-card flex flex-col overflow-hidden">
+      <PanelHeader title={lang === 'hi' ? 'संबंध लिंक विवरण' : 'Relationship'} onClose={onClose} />
 
-      <div className="flex-1 overflow-y-auto">
-        <div className="px-5 py-4 border-b border-border">
-          <p className="text-[15px] font-semibold text-foreground">{edge.type.replace(/_/g, ' ')}</p>
-          <p className="text-[12px] text-muted-foreground mt-1.5 leading-relaxed">
-            {edge.source.split(':').slice(1).join(':')} → {edge.target.split(':').slice(1).join(':')}
-          </p>
+      <div className="flex-1 overflow-y-auto p-5 space-y-4">
+        <div>
+          <Badge className={style.badge}>{lang === 'hi' ? getStatusHindi(edge.status) : style.label}</Badge>
+          <h4 className="text-[17px] font-semibold text-foreground mt-2 leading-snug">{edge.type}</h4>
         </div>
 
-        <Section title="State">
-          <Badge className={style.chip}>{style.label}</Badge>
-          <div className="mt-3 space-y-1.5 text-[12px] text-muted-foreground">
-            <div className="flex justify-between gap-2">
-              <span>Confidence</span>
-              <span className="font-mono text-foreground tabular-nums">
-                {Math.round((edge.confidence ?? 0) * 100)}%
-              </span>
-            </div>
-            <div className="flex justify-between gap-2">
-              <span>Extracted by</span>
-              <span className="font-mono text-foreground">{edge.extractionMethod || 'unknown'}</span>
-            </div>
+        {edge.weight && (
+          <div>
+            <p className="label mb-1">{lang === 'hi' ? 'विश्वसनीयता / भार गुणांक' : 'Confidence / Weight'}</p>
+            <p className="font-mono text-sm text-foreground tabular-nums">{(edge.weight * 100).toFixed(0)}%</p>
           </div>
-        </Section>
+        )}
 
-        {edge.evidenceSnippet && (
-          <Section title="Supporting text">
-            <blockquote className="text-[12px] text-foreground leading-relaxed border-l-2 border-primary/50 pl-3 italic">
-              {edge.evidenceSnippet}
-            </blockquote>
-          </Section>
+        {edge.sourceEvidence && (
+          <div>
+            <p className="label mb-1">{lang === 'hi' ? 'मूल साक्ष्य दस्तावेज़' : 'Source evidence'}</p>
+            <p className="text-xs text-muted-foreground">{edge.sourceEvidence}</p>
+          </div>
         )}
       </div>
 
-      {canReview && edge.status !== 'CONFIRMED' && (
-        <div className="border-t border-border p-3 space-y-1.5">
-          <p className="text-[11px] text-muted-foreground leading-snug mb-1.5">
-            Confirming records that a person vouched for this link.
-          </p>
-          <Button size="sm" className="w-full" loading={reviewing} onClick={() => onReview('CONFIRMED')}>
-            Confirm relationship
+      {canReview && (
+        <div className="border-t border-border p-4 flex gap-2">
+          <Button
+            size="sm"
+            className="flex-1"
+            loading={reviewing}
+            onClick={() => onReview(edge.id, 'CONFIRMED')}
+          >
+            {lang === 'hi' ? 'पुष्टि करें (Confirm)' : 'Confirm'}
           </Button>
           <Button
-            variant="secondary"
+            variant="destructive"
             size="sm"
-            className="w-full"
-            disabled={reviewing}
-            onClick={() => onReview('UNVERIFIED')}
+            className="flex-1"
+            loading={reviewing}
+            onClick={() => onReview(edge.id, 'DISPUTED')}
           >
-            Mark unverified
+            {lang === 'hi' ? 'अस्वीकार करें' : 'Dispute'}
           </Button>
         </div>
       )}

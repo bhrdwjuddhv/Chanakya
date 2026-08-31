@@ -1,50 +1,40 @@
-FICTIONAL PROTOTYPE DATA — created for a software demonstration. All names, companies,
-addresses and vehicles below are invented.
+FICTIONAL PROTOTYPE DATA — INDIAN LAW ENFORCEMENT & INSTITUTIONAL SECURITY CONTEXT (NCRB/MHA).
+All names, companies, addresses and vehicles below are invented.
 
-RIVERFRONT DISAPPEARANCE
-LABORATORY ACCESS AND MATERIALS REVIEW
+YAMUNA EXPRESSWAY ABDUCTION & TECH THEFT
+INSTITUTE ACCESS CONTROL & MATERIALS AUDIT
 Reference: RF-ACC-05
 Date: 21 April 2025
+Conducted by: Special Investigation Team (UP Police & Forensic Audit Unit)
+Location: Yamuna Advanced Bio-Materials Institute, Knowledge Park II, Greater Noida
 Classification: CONFIDENTIAL
 
-Review of badge records, visitor logs and materials movements at the Riverfront
-Bioscience Institute, 3 Foundry Lane, for the period 1 February to 15 March 2025.
+1. SMART CARD RFID ACCESS LOGS
 
-BADGE ACTIVITY
+Dr. Ananya Sen accessed Institute Lab B on 26 of 31 working days in February-March.
+Final verified entry: 8 March at 08:41 AM; final exit: 18:52 PM the same evening.
 
-Dr. Alina Petrova badged into Institute Lab B on 26 of 31 working days in the period.
-Her final entry is 8 March at 08:41 and her final exit 18:52 the same day.
+Jayant Kumar swiped into Lab B on 24 of 31 working days. On 8 March his card logs exit at 17:55 PM
+(57 minutes prior to Dr. Sen). Kumar claims he returned directly to his Jaypee Greens residence.
 
-Jonas Kerr badged into Lab B on 24 of 31 working days. On 8 March his badge records an
-exit at 17:55, fifty-seven minutes before Petrova's. His stated account is that he went
-directly home to 61 Alder Street.
+An access card assigned to lab technician Babita Rana was swiped to open Lab B at 21:14 PM on 8 March.
+Babita Rana was not scheduled on duty. She states she left her RFID badge in the staff locker and was
+attending a wedding in Ghaziabad; alibi under verification.
 
-An additional badge, issued to Bettina Roche, laboratory technician, was used to enter
-Lab B at 21:14 on 8 March. Ms Roche was not rostered that evening. She states she left
-the badge in her locker and was at a family event; this has not yet been checked.
+2. VISITOR REGISTER VERIFICATION
 
-VISITOR LOG
+Manual visitor diary on 6 March (Page 212) records "V. Singhania" entering Lab B at 15:40 PM without
+an internal host signature.
+Line 28 records a second visitor: "T. Iyer, Singhania Logistics", signing in at 15:44 PM and departing
+at 16:20 PM.
 
-The handwritten log for 6 March, page 212, records "M. Vale" entering at 15:40 with no
-host and no badge issued. The line beneath it records a second visitor the same
-afternoon, "T. Ilves, Vale Freight", signing in at 15:44 and out at 16:20. T. Ilves does
-not appear elsewhere in the material held.
+3. SENSITIVE MATERIALS AUDIT
 
-MATERIALS
+Consignment of high-grade ballistic composite matrix samples (Batch Ref: CMP-114) was loaded on 7 March
+by Singhania Multi-Modal Logistics under the standing contract. The gate receipt is signed, but the
+receiving DRDO test centre in Pune has confirmed non-receipt. Institute stores lists CMP-114 as untraced.
 
-A consignment of composite test samples, reference CMP-114, was collected from the
-loading area on 7 March by Vale Freight Holdings under the Institute's standing transport
-contract. The consignment note is signed but the receiving depot has no record of its
-arrival. Institute stores lists the consignment as outstanding.
+A subsequent consignment, CMP-116, scheduled for 10 March, was frozen by Institute administration
+following Dr. Sen's disappearance.
 
-A second consignment, CMP-116, scheduled for collection on 10 March, was cancelled by
-the Institute after Petrova was reported missing.
-
-OBSERVATIONS
-
-Three matters warrant follow-up: the after-hours use of Bettina Roche's badge on the
-evening of 8 March; the identity of the second Vale Freight visitor, T. Ilves; and the
-missing consignment CMP-114. None of these is presently linked to Petrova's
-disappearance, and each may have an ordinary explanation.
-
-END OF REVIEW
+END OF MATERIALS AUDIT

@@ -5,6 +5,7 @@ import { get, postForm } from '../../lib/api';
 import { useAuth, can } from '../../lib/auth';
 import { Badge, Button, Card, CardHeader, EmptyState, ErrorState, Spinner } from '../ui';
 import { BiometricMatchCard } from './BiometricMatchCard';
+import { useI18n } from '../../lib/i18n';
 
 export function FingerprintSearchPanel({ caseId }) {
   const user = useAuth((s) => s.user);
@@ -12,6 +13,7 @@ export function FingerprintSearchPanel({ caseId }) {
   const fileRef = useRef(null);
   const [result, setResult] = useState(null);
   const [preview, setPreview] = useState(null);
+  const { t, lang } = useI18n();
 
   const status = useQuery({
     queryKey: ['fingerprint-status'],
@@ -28,20 +30,17 @@ export function FingerprintSearchPanel({ caseId }) {
     onSuccess: setResult,
   });
 
-  if (status.isLoading) return <Spinner label="Checking the AFIS engine" />;
+  if (status.isLoading) return <Spinner label={lang === 'hi' ? 'अंगुलिचिह्न (AFIS) स्थिति जांची जा रही है...' : 'Checking the AFIS engine'} />;
   if (status.error) return <ErrorState error={status.error} onRetry={status.refetch} />;
 
   if (!status.data.ok) {
     return (
       <Card className="p-5 max-w-2xl">
         <Fingerprint className="size-6 text-muted-foreground/50" />
-        <h3 className="text-sm font-semibold text-foreground mt-3">AFIS engine unavailable</h3>
+        <h3 className="text-sm font-semibold text-foreground mt-3">{lang === 'hi' ? 'AFIS इंजन अनुपलब्ध' : 'AFIS engine unavailable'}</h3>
         <p className="text-sm text-muted-foreground mt-1.5">
-          Matching is disabled rather than faked. Reported: {status.data.error}
+          {status.data.error}
         </p>
-        <code className="block text-[11px] font-mono bg-black text-[#DBDBDB] rounded-control px-2.5 py-1.5 mt-3">
-          docker compose --profile biometrics up -d afis
-        </code>
       </Card>
     );
   }

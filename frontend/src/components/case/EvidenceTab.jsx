@@ -12,12 +12,14 @@ import {
 import { get, post, postForm } from '../../lib/api';
 import { Badge, Button, Card, EmptyState, ErrorState, Spinner } from '../ui';
 import { ENTITY_COLOURS, formatBytes, formatDateTime } from '../../lib/utils';
+import { useI18n } from '../../lib/i18n';
 
 export function EvidenceTab({ caseId }) {
   const queryClient = useQueryClient();
   const fileRef = useRef(null);
   const [uploadError, setUploadError] = useState(null);
   const [open, setOpen] = useState(null);
+  const { t, lang } = useI18n();
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['evidence', caseId],
@@ -71,7 +73,9 @@ export function EvidenceTab({ caseId }) {
           }}
         />
         <Upload className="size-6 text-muted-foreground/50 mx-auto" />
-        <p className="text-sm font-medium text-foreground mt-2">Drop a document here, or</p>
+        <p className="text-sm font-medium text-foreground mt-2">
+          {lang === 'hi' ? 'साक्ष्य दस्तावेज़ यहाँ खींचें या अपलोड करें' : 'Drop a document here, or'}
+        </p>
         <Button
           variant="secondary"
           size="sm"
@@ -79,23 +83,24 @@ export function EvidenceTab({ caseId }) {
           loading={uploadMutation.isPending}
           onClick={() => fileRef.current?.click()}
         >
-          Choose a file
+          {lang === 'hi' ? 'फ़ाइल चुनें (Browse File)' : 'Choose a file'}
         </Button>
         <p className="text-xs text-muted-foreground mt-2">
-          PDF, DOCX, TXT, CSV or LOG. Text is extracted, indexed for search, and mined for entities and
-          relationships, which enter the graph as suggestions for review.
+          {lang === 'hi'
+            ? 'PDF, DOCX, TXT, CSV या LOG। पाठ्य सामग्री से एआई द्वारा आपराधिक इकाइयां और संबंध स्वतः निष्कर्षित कर ग्राफ़ में दर्ज किए जाते हैं।'
+            : 'PDF, DOCX, TXT, CSV or LOG. Text is extracted, indexed for search, and mined for entities and relationships, which enter the graph as suggestions for review.'}
         </p>
         {uploadError && <p className="text-xs text-destructive mt-2">{uploadError}</p>}
       </Card>
 
-      {isLoading && <Spinner label="Loading evidence" />}
+      {isLoading && <Spinner label={lang === 'hi' ? 'साक्ष्य पत्रावली लोड हो रही है...' : 'Loading evidence'} />}
       {error && <ErrorState error={error} onRetry={refetch} />}
       {data?.evidence.length === 0 && (
         <Card>
           <EmptyState
             icon={FileText}
-            title="No evidence on this case yet"
-            description="Upload a document to start building the relationship graph from it."
+            title={lang === 'hi' ? 'इस केस में अभी कोई साक्ष्य दर्ज नहीं है' : 'No evidence on this case yet'}
+            description={lang === 'hi' ? 'संबंध नेटवर्क ग्राफ़ निर्माण हेतु पहली साक्ष्य फ़ाइल अपलोड करें।' : 'Upload a document to start building the relationship graph from it.'}
           />
         </Card>
       )}
